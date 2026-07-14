@@ -895,6 +895,57 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
+    .assumption-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-bottom: 18px;
+      background: rgba(212, 175, 55, .14);
+      border: 1px solid rgba(212, 175, 55, .14);
+    }
+    .assumption {
+      padding: 22px;
+      background: #11100e;
+    }
+    .assumption b {
+      display: block;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 400;
+      margin-bottom: 9px;
+    }
+    .assumption span {
+      display: block;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .assumption small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .revenue-table {
+      margin: 18px 0;
+      overflow-x: auto;
+      border: 1px solid rgba(212, 175, 55, .16);
+      background: #0d0d0d;
+    }
+    .revenue-table table {
+      min-width: 760px;
+    }
+    .revenue-note {
+      margin: 16px 0 24px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
     .scenario {
       padding: 26px;
       background: linear-gradient(180deg, #171511, #100f0d);
@@ -944,6 +995,7 @@
       .product-grid { grid-template-columns: repeat(2, 1fr); }
       .rarity-ladder { grid-template-columns: repeat(2, 1fr); }
       .flow { grid-template-columns: repeat(2, 1fr); }
+      .assumption-grid { grid-template-columns: repeat(2, 1fr); }
       .sample-table, .guardrails { grid-template-columns: repeat(2, 1fr); }
       .cast-grid, .scenario-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -955,6 +1007,7 @@
       .hero-metrics, .product-grid, .pool-grid, .rarity-ladder, .flow, .sample-table, .guardrails { grid-template-columns: 1fr; }
       .commercial-copy { padding: 26px 22px; }
       .commercial-visual img { min-height: 240px; }
+      .assumption-grid { grid-template-columns: 1fr; }
       .cast-grid, .scenario-grid { grid-template-columns: 1fr; }
       .bar-row { grid-template-columns: 108px 1fr 58px; gap: 10px; }
       .auth-panel { padding: 24px; }
@@ -1061,40 +1114,134 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="kicker">Business case range</div>
-            <h2>Three revenue scenarios.</h2>
+            <div class="kicker">Business case model</div>
+            <h2>Cards should sell more nights, not only more cards.</h2>
           </div>
           <p>
-            主模型先保持 300 boxes / ¥10,000。Projection 用 range 表達，不硬估單一數字；
-            management 可以一眼看到 card sales plus champagne/table uplift.
+            Partner focus: how many reward cards create cost, how many discount cards trigger champagne or table spend,
+            and how mission cards bring customers back. 以下 projection 用官網 price list + 你提供嘅 daily revenue 作簡單模型。
           </p>
         </div>
+        <div class="assumption-grid">
+          <div class="assumption"><b>¥5.0M</b><span>Current daily revenue</span><small>Given operating reference: around five active hours per day.</small></div>
+          <div class="assumption"><b>¥1.0M</b><span>Revenue per hour</span><small>Useful anchor for management: card impact should be measured against bar productivity.</small></div>
+          <div class="assumption"><b>20+</b><span>Seat capacity</span><small>About 150 possible 40-min seat sessions across five hours if fully rotated.</small></div>
+          <div class="assumption"><b>¥33K</b><span>Avg seat session</span><small>Estimated ¥5.0M / 150 seat sessions, before detailed POS data.</small></div>
+        </div>
+        <div class="revenue-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Official price anchor</th>
+                <th>Website price list</th>
+                <th>How cards stimulate existing LUXE sales</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Main Floor set</td>
+                <td>¥13,000 / 40 min</td>
+                <td>Return mission and guest pass cards push another 40-min visit instead of only one-night discount.</td>
+              </tr>
+              <tr>
+                <td>VIP Room set</td>
+                <td>¥27,000 / 40 min</td>
+                <td>VIP assist / table upgrade cards become upsell prompts when room is available.</td>
+              </tr>
+              <tr>
+                <td>Cast nomination</td>
+                <td>+¥4,000 / 40 min</td>
+                <td>Girl cards and collection missions give customers a reason to nominate or ask for specific casts.</td>
+              </tr>
+              <tr>
+                <td>Cast drinks</td>
+                <td>¥3,000-¥4,000</td>
+                <td>Action cards such as toast, dice, photo, and signature moments should attach to cast drinks.</td>
+              </tr>
+              <tr>
+                <td>Champagne</td>
+                <td>From ¥40,000+</td>
+                <td>Champagne 20 / BOGO / ceremony cards should be gated by bottle order, cap, and staff approval.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="revenue-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Average full box contents</th>
+                <th>Cards per box</th>
+                <th>Commercial role</th>
+                <th>Cost control</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Discount / wine trigger cards</td>
+                <td>~9.8</td>
+                <td>Champagne discount, vodka set with minimum spend, VIP assist, guest return pass.</td>
+                <td>Expiry, no stacking, selected bottles only, one redemption per table/night.</td>
+              </tr>
+              <tr>
+                <td>Gift cards</td>
+                <td>~2.5</td>
+                <td>Small gift, signature card, ceremony moment, or top-tier season celebration.</td>
+                <td>Mostly low-cost; high-tier gifts require management approval.</td>
+              </tr>
+              <tr>
+                <td>Action cards</td>
+                <td>~8.8</td>
+                <td>Toast, song, dice, photo, signature, champagne call, consent-based premium moments.</td>
+                <td>Staff approval, cast consent, substitute reward if declined.</td>
+              </tr>
+              <tr>
+                <td>Mission / return visit cards</td>
+                <td>~14.7</td>
+                <td>Bring card back next visit, collect cast cards, complete three visits in season.</td>
+                <td>Only creates value when customer returns or increases spend.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="revenue-note">
+          Projection logic: 300 boxes create ¥3.0M direct card sales, but the stronger business case is the extra champagne,
+          VIP, nomination, cast drink, extension, and repeat-visit spend triggered by the card content. Promo liability is
+          estimated separately so management can see that the cards are not simply giving away margin. 中文重點：卡牌係 sales trigger，
+          唔係 coupon book；gift/discount 必須綁 minimum spend、有效期、不可疊加。
+        </p>
         <div class="scenario-grid">
           <article class="scenario">
             <h3>Conservative</h3>
             <dl>
               <dt>Boxes sold</dt><dd>150</dd>
-              <dt>Box revenue</dt><dd>¥1.5M</dd>
-              <dt>Uplift assumption</dt><dd>+15%</dd>
-              <dt>Use case</dt><dd>MVP test</dd>
+              <dt>Card sales</dt><dd>¥1.5M</dd>
+              <dt>Bar sales triggered</dt><dd>¥3.2M</dd>
+              <dt>Promo liability</dt><dd>-¥0.4M</dd>
+              <dt>Net gross impact</dt><dd>¥4.3M</dd>
+              <dt>Daily revenue equivalent</dt><dd>0.9 day</dd>
             </dl>
           </article>
           <article class="scenario">
             <h3>Base</h3>
             <dl>
               <dt>Boxes sold</dt><dd>300</dd>
-              <dt>Box revenue</dt><dd>¥3.0M</dd>
-              <dt>Uplift assumption</dt><dd>+25%</dd>
-              <dt>Use case</dt><dd>Season launch</dd>
+              <dt>Card sales</dt><dd>¥3.0M</dd>
+              <dt>Bar sales triggered</dt><dd>¥9.8M</dd>
+              <dt>Promo liability</dt><dd>-¥1.2M</dd>
+              <dt>Net gross impact</dt><dd>¥11.6M</dd>
+              <dt>Daily revenue equivalent</dt><dd>2.3 days</dd>
             </dl>
           </article>
           <article class="scenario">
             <h3>Aggressive</h3>
             <dl>
               <dt>Boxes sold</dt><dd>300 + packs</dd>
-              <dt>Box revenue</dt><dd>¥3.0M+</dd>
-              <dt>Uplift assumption</dt><dd>+35%</dd>
-              <dt>Use case</dt><dd>Collector hype</dd>
+              <dt>Card sales</dt><dd>¥3.9M</dd>
+              <dt>Bar sales triggered</dt><dd>¥16.5M</dd>
+              <dt>Promo liability</dt><dd>-¥2.1M</dd>
+              <dt>Net gross impact</dt><dd>¥18.3M</dd>
+              <dt>Daily revenue equivalent</dt><dd>3.7 days</dd>
             </dl>
           </article>
         </div>
