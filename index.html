@@ -587,40 +587,135 @@
     .cast-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 22px;
       margin-bottom: 34px;
     }
     .cast-card {
       position: relative;
-      min-height: 360px;
-      padding: 22px;
+      min-height: 610px;
+      padding: 14px;
       overflow: hidden;
       background:
-        linear-gradient(180deg, rgba(20, 18, 14, .92), rgba(7, 7, 7, .98)),
-        radial-gradient(circle at 70% 10%, rgba(212, 175, 55, .22), transparent 34%);
-      border: 1px solid rgba(212, 175, 55, .24);
+        linear-gradient(160deg, rgba(255, 255, 255, .08), transparent 28%),
+        linear-gradient(180deg, #15120b, #050505 60%, #0b0907),
+        radial-gradient(circle at 70% 10%, rgba(212, 175, 55, .3), transparent 34%);
+      border: 1px solid rgba(212, 175, 55, .42);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .44);
     }
     .cast-card::before {
       content: "";
       position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(212, 175, 55, .24);
+      inset: 10px;
+      border: 1px solid rgba(212, 175, 55, .38);
       pointer-events: none;
+      z-index: 4;
+    }
+    .cast-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, transparent 0 34%, rgba(255, 246, 190, .14) 38%, transparent 43% 100%),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, .04) 0 1px, transparent 1px 7px);
+      mix-blend-mode: screen;
+      opacity: .35;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .cast-card.card-champagne {
+      border-color: rgba(235, 202, 98, .58);
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, .1), transparent 30%),
+        linear-gradient(180deg, #1e170c, #080706 62%, #100b05),
+        radial-gradient(circle at 50% 0%, rgba(235, 202, 98, .38), transparent 34%);
+    }
+    .cast-card.card-diamond {
+      border-color: rgba(255, 255, 255, .42);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, .12), transparent 30%),
+        linear-gradient(180deg, #101112, #050505 60%, #0c0d0f),
+        radial-gradient(circle at 48% 3%, rgba(185, 214, 255, .28), transparent 34%);
+    }
+    .cast-card-inner {
+      position: relative;
+      z-index: 2;
+      min-height: 582px;
+      display: grid;
+      grid-template-rows: auto minmax(300px, 1fr) auto;
+      border: 1px solid rgba(212, 175, 55, .18);
+      background: rgba(7, 7, 7, .58);
     }
     .cast-rarity {
+      position: relative;
+      z-index: 5;
       display: flex;
       justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px 12px;
       color: var(--gold);
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: .16em;
+      letter-spacing: .18em;
       text-transform: uppercase;
+      border-bottom: 1px solid rgba(212, 175, 55, .2);
+    }
+    .cast-photo {
+      position: relative;
+      height: 328px;
+      overflow: hidden;
+      background: #0a0a0a;
+      border-bottom: 1px solid rgba(212, 175, 55, .26);
+    }
+    .cast-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: saturate(.92) contrast(1.04);
+    }
+    .cast-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .04) 0%, rgba(0, 0, 0, .08) 42%, rgba(5, 5, 5, .76) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, .55), transparent 28%, transparent 72%, rgba(0, 0, 0, .52));
+    }
+    .cast-photo-label {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, .86);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .cast-photo-label::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .cast-body {
+      padding: 18px 16px 16px;
+      background:
+        linear-gradient(180deg, rgba(7, 7, 7, .86), rgba(8, 7, 5, .98)),
+        radial-gradient(circle at 84% 12%, rgba(212, 175, 55, .16), transparent 32%);
     }
     .cast-name {
       position: relative;
-      margin: 118px 0 20px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 12px;
+      margin: 0 0 16px;
       font-family: var(--serif);
-      font-size: 36px;
+      font-size: 38px;
       line-height: 1;
       font-weight: 400;
     }
@@ -633,6 +728,19 @@
       letter-spacing: .18em;
       text-transform: uppercase;
     }
+    .grade-badge {
+      align-self: start;
+      min-width: 46px;
+      padding: 7px 8px 6px;
+      border: 1px solid rgba(212, 175, 55, .38);
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-align: center;
+      text-transform: uppercase;
+    }
     .cast-stats {
       position: relative;
       display: grid;
@@ -641,13 +749,14 @@
       background: rgba(212, 175, 55, .18);
     }
     .cast-stat {
-      padding: 10px;
-      background: rgba(9, 9, 9, .9);
+      min-height: 64px;
+      padding: 11px;
+      background: rgba(9, 9, 9, .84);
     }
     .cast-stat b {
       display: block;
       color: var(--gold);
-      font-size: 18px;
+      font-size: 20px;
       line-height: 1;
     }
     .cast-stat span {
@@ -663,14 +772,27 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 16px;
+      margin-top: 14px;
     }
     .cast-tags span {
-      padding: 5px 8px;
+      padding: 6px 8px;
       border: 1px solid rgba(212, 175, 55, .18);
       color: var(--muted);
       font-size: 10px;
       letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .cast-card-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+      padding-top: 12px;
+      color: rgba(245, 240, 232, .62);
+      border-top: 1px solid rgba(212, 175, 55, .14);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
     .table-wrap {
@@ -937,43 +1059,70 @@
           </div>
           <p>
             Official LUXE cast data supplies the profile layer: stage name, romanized name, grade, height,
-            cup size, English level, appearance tags, and service style. Public deck uses generated/stylized card visuals;
-            internal version can swap in authorized official photos.
+            cup size, English level, appearance tags, and service style. The sample cards below now use public official cast
+            imagery as a visual reference; final commercial usage should be approved by LUXE before printing.
           </p>
         </div>
         <div class="cast-grid">
-          <article class="cast-card">
-            <div class="cast-rarity"><span>Bling Girl</span><span>NFC · 001/003</span></div>
-            <h3 class="cast-name">Sakura <span>さくら · Grade A+</span></h3>
-            <div class="cast-stats">
-              <div class="cast-stat"><b>B</b><span>Cup</span></div>
-              <div class="cast-stat"><b>BASIC</b><span>English</span></div>
-              <div class="cast-stat"><b>Beauty</b><span>Look</span></div>
-              <div class="cast-stat"><b>Party</b><span>Service</span></div>
+          <article class="cast-card card-bling">
+            <div class="cast-card-inner">
+              <div class="cast-rarity"><span>Bling Girl</span><span>NFC · BG01 · 001/003</span></div>
+              <div class="cast-photo">
+                <img src="https://rpqahhhvehxbyp0l.public.blob.vercel-storage.com/web_cast_99_1762532005505_vb2ftl.jpg" alt="Sakura official LUXE cast photo reference">
+                <span class="cast-photo-label">Official profile photo</span>
+              </div>
+              <div class="cast-body">
+                <h3 class="cast-name">Sakura <span>さくら · Season 01</span><b class="grade-badge">A+</b></h3>
+                <div class="cast-stats">
+                  <div class="cast-stat"><b>B</b><span>Cup</span></div>
+                  <div class="cast-stat"><b>BASIC</b><span>English</span></div>
+                  <div class="cast-stat"><b>Kirei</b><span>Look</span></div>
+                  <div class="cast-stat"><b>Party</b><span>Service</span></div>
+                </div>
+                <div class="cast-tags"><span>Beauty</span><span>Cute</span><span>Listener</span><span>Drinks</span></div>
+                <div class="cast-card-footer"><span>LUXE Shinjuku</span><span>1 of 3</span></div>
+              </div>
             </div>
-            <div class="cast-tags"><span>kirei</span><span>cute</span><span>listener</span><span>drinks</span></div>
           </article>
-          <article class="cast-card">
-            <div class="cast-rarity"><span>Champagne Girl</span><span>NFC · 002/003</span></div>
-            <h3 class="cast-name">Mashiro <span>ましろ · Grade A-</span></h3>
-            <div class="cast-stats">
-              <div class="cast-stat"><b>166</b><span>Height</span></div>
-              <div class="cast-stat"><b>G</b><span>Cup</span></div>
-              <div class="cast-stat"><b>Model</b><span>Look</span></div>
-              <div class="cast-stat"><b>28</b><span>Age</span></div>
+          <article class="cast-card card-champagne">
+            <div class="cast-card-inner">
+              <div class="cast-rarity"><span>Champagne Girl</span><span>NFC · BG03 · 002/003</span></div>
+              <div class="cast-photo">
+                <img src="https://rpqahhhvehxbyp0l.public.blob.vercel-storage.com/web_cast_96_1780976697426_7o9q5.jpg" alt="Mashiro official LUXE cast photo reference">
+                <span class="cast-photo-label">Official profile photo</span>
+              </div>
+              <div class="cast-body">
+                <h3 class="cast-name">Mashiro <span>ましろ · Season 01</span><b class="grade-badge">A-</b></h3>
+                <div class="cast-stats">
+                  <div class="cast-stat"><b>166</b><span>Height</span></div>
+                  <div class="cast-stat"><b>G</b><span>Cup</span></div>
+                  <div class="cast-stat"><b>Model</b><span>Look</span></div>
+                  <div class="cast-stat"><b>28</b><span>Age</span></div>
+                </div>
+                <div class="cast-tags"><span>Sexy</span><span>Model</span><span>Adult</span><span>Drinks</span></div>
+                <div class="cast-card-footer"><span>LUXE Shinjuku</span><span>2 of 3</span></div>
+              </div>
             </div>
-            <div class="cast-tags"><span>sexy</span><span>model</span><span>adult</span><span>drinks</span></div>
           </article>
-          <article class="cast-card">
-            <div class="cast-rarity"><span>Black Diamond</span><span>NFC · 003/003</span></div>
-            <h3 class="cast-name">Riri <span>りり · Grade A</span></h3>
-            <div class="cast-stats">
-              <div class="cast-stat"><b>165</b><span>Height</span></div>
-              <div class="cast-stat"><b>F</b><span>Cup</span></div>
-              <div class="cast-stat"><b>BASIC</b><span>English</span></div>
-              <div class="cast-stat"><b>VIP</b><span>Style</span></div>
+          <article class="cast-card card-diamond">
+            <div class="cast-card-inner">
+              <div class="cast-rarity"><span>Black Diamond</span><span>NFC · BG04 · 003/003</span></div>
+              <div class="cast-photo">
+                <img src="https://rpqahhhvehxbyp0l.public.blob.vercel-storage.com/web_cast_116_1781417036471_3pvcwq.jpg" alt="Riri official LUXE cast photo reference">
+                <span class="cast-photo-label">Official profile photo</span>
+              </div>
+              <div class="cast-body">
+                <h3 class="cast-name">Riri <span>りり · Season 01</span><b class="grade-badge">A</b></h3>
+                <div class="cast-stats">
+                  <div class="cast-stat"><b>165</b><span>Height</span></div>
+                  <div class="cast-stat"><b>F</b><span>Cup</span></div>
+                  <div class="cast-stat"><b>BASIC</b><span>English</span></div>
+                  <div class="cast-stat"><b>VIP</b><span>Style</span></div>
+                </div>
+                <div class="cast-tags"><span>Elegant</span><span>Big Sister</span><span>Sweet</span><span>Free</span></div>
+                <div class="cast-card-footer"><span>LUXE Shinjuku</span><span>3 of 3</span></div>
+              </div>
             </div>
-            <div class="cast-tags"><span>elegant</span><span>big sister</span><span>sweet</span><span>free</span></div>
           </article>
         </div>
         <div class="table-wrap">
