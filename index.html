@@ -1,0 +1,1937 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LUXE Cards Concept Deck</title>
+  <meta name="description" content="Private LUXE nightlife trading card concept deck.">
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-2: #10100f;
+      --panel: #141311;
+      --panel-2: #1a1713;
+      --ink: #f5f0e8;
+      --muted: #9a9282;
+      --dim: #5d574c;
+      --gold: #d4af37;
+      --gold-2: #b8962f;
+      --gold-soft: rgba(212, 175, 55, .18);
+      --line: rgba(212, 175, 55, .18);
+      --danger: #c75f68;
+      --radius: 0;
+      --shadow: 0 28px 90px rgba(0, 0, 0, .55);
+      --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: var(--sans);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    body.auth-locked {
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, .96), rgba(8, 8, 8, .84)),
+        radial-gradient(circle at 68% 18%, rgba(212, 175, 55, .22), transparent 32%),
+        #080808;
+    }
+    body.auth-locked > :not(.auth-gate) { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .auth-gate {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: var(--ink);
+    }
+    .auth-panel {
+      width: min(420px, 100%);
+      padding: 30px;
+      background: rgba(12, 12, 12, .94);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .auth-mark {
+      font-family: var(--serif);
+      color: var(--gold);
+      font-size: 34px;
+      letter-spacing: .12em;
+      margin-bottom: 12px;
+    }
+    .auth-panel h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 34px;
+      letter-spacing: .04em;
+    }
+    .auth-panel p {
+      margin: 8px 0 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .auth-form { display: grid; gap: 12px; }
+    .auth-form label {
+      display: grid;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .auth-form input {
+      min-height: 46px;
+      padding: 0 12px;
+      background: #0e0e0e;
+      color: var(--ink);
+      border: 1px solid rgba(212, 175, 55, .25);
+      font: inherit;
+    }
+    .auth-form input:focus {
+      outline: 1px solid var(--gold);
+      border-color: var(--gold);
+    }
+    .auth-error {
+      min-height: 18px;
+      color: var(--danger);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .auth-submit {
+      min-height: 46px;
+      border: 1px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #090806;
+      font: inherit;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 36px;
+      background: rgba(8, 8, 8, .86);
+      border-bottom: 1px solid rgba(212, 175, 55, .1);
+      backdrop-filter: blur(14px);
+    }
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      white-space: nowrap;
+    }
+    .brand strong {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: .14em;
+    }
+    .brand span {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--ink);
+      font-size: 11px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover { color: var(--gold); }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      grid-template-columns: minmax(320px, .78fr) minmax(420px, 1.22fr);
+      align-items: stretch;
+      background: #080808;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 86px 52px 86px 64px;
+      border-right: 1px solid rgba(212, 175, 55, .1);
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 1), rgba(8, 8, 8, .92)),
+        radial-gradient(circle at 8% 14%, rgba(212, 175, 55, .14), transparent 26%);
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(48px, 6vw, 86px);
+      line-height: .96;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .hero h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .hero-copy p {
+      max-width: 610px;
+      margin: 24px 0 0;
+      color: #d7d0c3;
+      font-size: 16px;
+    }
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 34px;
+      background: rgba(212, 175, 55, .16);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .hero-metric {
+      padding: 18px 16px;
+      background: rgba(20, 19, 17, .92);
+    }
+    .hero-metric strong {
+      display: block;
+      font-family: var(--serif);
+      color: var(--gold);
+      font-size: 31px;
+      line-height: 1;
+      font-weight: 400;
+    }
+    .hero-metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .hero-art {
+      position: relative;
+      min-height: 720px;
+      overflow: hidden;
+      background: #0b0b0b;
+    }
+    .hero-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: right center;
+      filter: saturate(.95) contrast(1.02);
+    }
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(8, 8, 8, .22), transparent 28%);
+      pointer-events: none;
+    }
+
+    main { background: var(--bg); }
+    section {
+      padding: 92px 36px;
+      border-top: 1px solid rgba(212, 175, 55, .1);
+    }
+    .wrap {
+      width: min(1200px, 100%);
+      margin: 0 auto;
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(260px, .75fr) minmax(300px, 1fr);
+      gap: 52px;
+      align-items: end;
+      margin-bottom: 46px;
+    }
+    .kicker {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.05;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 620px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(212, 175, 55, .16);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .commercial-visual {
+      margin: 34px 0 22px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 28px;
+      align-items: stretch;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, .16);
+      background:
+        radial-gradient(circle at 74% 18%, rgba(212, 175, 55, .14), transparent 34%),
+        linear-gradient(135deg, #11100e, #080808 62%);
+    }
+    .commercial-visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .commercial-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 34px 32px;
+    }
+    .commercial-copy strong {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .commercial-copy h3 {
+      max-width: 360px;
+      margin: 12px 0 0;
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .commercial-copy p {
+      max-width: 430px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .commercial-copy ul {
+      display: grid;
+      gap: 9px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #d7d0c3;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .commercial-copy li::before {
+      content: "◇";
+      margin-right: 9px;
+      color: var(--gold);
+    }
+    .product-card {
+      min-height: 174px;
+      padding: 24px;
+      background: linear-gradient(180deg, #151411, #0f0e0d);
+    }
+    .product-card b {
+      display: block;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .product-card strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--ink);
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .product-card span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 34px;
+      align-items: center;
+    }
+    .image-frame {
+      border: 1px solid rgba(212, 175, 55, .22);
+      background: #0d0d0d;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .image-frame img { width: 100%; }
+    .note-panel {
+      padding: 34px;
+      background: linear-gradient(180deg, #171511, #100f0d);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .note-panel h3 {
+      margin: 0 0 16px;
+      font-family: var(--serif);
+      font-size: 31px;
+      font-weight: 400;
+      color: var(--gold);
+    }
+    .note-panel p {
+      margin: 0 0 18px;
+      color: #d5cfc2;
+    }
+    .bullet-list {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .bullet-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .bullet-list li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      margin-top: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+    .family-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .family-panel {
+      display: flex;
+      flex-direction: column;
+      min-height: 560px;
+      padding: 18px;
+      border: 1px solid rgba(212, 175, 55, .16);
+      background: linear-gradient(180deg, #151411, #0d0d0d);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .28);
+    }
+    .family-face {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 300px;
+      aspect-ratio: 2.5 / 3.5;
+      padding: 14px;
+      margin: 0 auto 18px;
+      width: min(100%, 220px);
+      overflow: hidden;
+      border: 2px solid rgba(212, 175, 55, .54);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .08), transparent 28%),
+        radial-gradient(circle at 80% 18%, rgba(212, 175, 55, .24), transparent 30%),
+        linear-gradient(180deg, #1d1a14, #060606);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08), 0 20px 40px rgba(0, 0, 0, .42);
+    }
+    .family-face::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(212, 175, 55, .32);
+      border-radius: 5px;
+      pointer-events: none;
+    }
+    .family-face.photo {
+      justify-content: flex-end;
+      padding: 10px;
+      background: #090909;
+    }
+    .family-face.photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .92;
+    }
+    .family-face.photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, .06), rgba(0, 0, 0, .82));
+      z-index: 1;
+    }
+    .face-top, .face-bottom, .face-center {
+      position: relative;
+      z-index: 2;
+    }
+    .face-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .face-center {
+      margin: auto 0;
+      text-align: center;
+    }
+    .face-center b {
+      display: block;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .face-center span {
+      display: block;
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .face-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      color: rgba(245, 240, 232, .86);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .face-bottom b {
+      display: block;
+      margin-top: 4px;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .face-chip {
+      display: block;
+      width: 24px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1px solid rgba(212, 175, 55, .68);
+      background:
+        linear-gradient(90deg, transparent 31%, rgba(212, 175, 55, .46) 32%, transparent 34%),
+        linear-gradient(180deg, rgba(212, 175, 55, .72), rgba(140, 110, 32, .42));
+    }
+    .face-white {
+      border-color: rgba(245, 240, 232, .82);
+      background: linear-gradient(180deg, #e6ded1, #bfb3a4);
+    }
+    .face-white .face-top, .face-white .face-bottom, .face-white .face-center span { color: #17120c; }
+    .face-white .face-center b, .face-white .face-bottom b { color: #7d5c13; }
+    .family-face.photo.face-white .face-top,
+    .family-face.photo.face-white .face-bottom {
+      color: rgba(245, 240, 232, .9);
+    }
+    .family-face.photo.face-white .face-bottom b {
+      color: var(--gold);
+    }
+    .face-diamond {
+      border-color: rgba(236, 236, 255, .74);
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255, 255, 255, .28), transparent 28%),
+        linear-gradient(135deg, #050505, #1d2230 52%, #050505);
+    }
+    .family-panel h3 {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 29px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .family-panel p {
+      margin: 0;
+      color: #d5cfc2;
+      font-size: 14px;
+    }
+    .family-meta {
+      display: grid;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 18px;
+    }
+    .family-meta div {
+      display: grid;
+      grid-template-columns: 104px 1fr;
+      gap: 12px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(212, 175, 55, .12);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .family-meta strong {
+      color: var(--ink);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .distribution {
+      display: grid;
+      grid-template-columns: minmax(320px, .9fr) minmax(360px, 1.1fr);
+      gap: 34px;
+      align-items: start;
+    }
+    .bars {
+      display: grid;
+      gap: 16px;
+      padding: 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 76px;
+      gap: 14px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .bar {
+      height: 12px;
+      background: rgba(255, 255, 255, .06);
+      overflow: hidden;
+    }
+    .bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-2), var(--gold));
+    }
+    .pool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(212, 175, 55, .16);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .pool-item {
+      padding: 24px;
+      min-height: 160px;
+      background: linear-gradient(180deg, #151411, #0f0e0d);
+    }
+    .pool-item strong {
+      display: block;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 400;
+    }
+    .pool-item span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .rarity-ladder {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .tier {
+      min-height: 230px;
+      padding: 22px;
+      background: linear-gradient(180deg, #161411, #0d0c0b);
+      border: 1px solid rgba(212, 175, 55, .16);
+      position: relative;
+      overflow: hidden;
+    }
+    .tier::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -60px auto;
+      width: 130px;
+      height: 130px;
+      border: 1px solid rgba(212, 175, 55, .12);
+      transform: rotate(45deg);
+    }
+    .tier .level {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .tier h3 {
+      margin: 18px 0 14px;
+      font-family: var(--serif);
+      font-size: 27px;
+      font-weight: 400;
+    }
+    .tier p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(212, 175, 55, .16);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .flow-step {
+      padding: 28px;
+      background: linear-gradient(180deg, #151411, #0f0e0d);
+      min-height: 212px;
+    }
+    .flow-step b {
+      display: block;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+    .flow-step strong {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .flow-step span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .sample-table {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .sample-card {
+      padding: 24px;
+      min-height: 220px;
+      background: linear-gradient(180deg, #171511, #100f0d);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .sample-card .tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border: 1px solid rgba(212, 175, 55, .32);
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .sample-card h3 {
+      margin: 0 0 14px;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+    }
+    .sample-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .guardrails {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(212, 175, 55, .16);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .guardrail {
+      padding: 24px;
+      min-height: 150px;
+      background: #11100e;
+    }
+    .guardrail strong {
+      display: block;
+      color: var(--gold);
+      margin-bottom: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .guardrail span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .cast-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 34px;
+    }
+    .cast-card {
+      position: relative;
+      min-height: 610px;
+      padding: 14px;
+      overflow: hidden;
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, .08), transparent 28%),
+        linear-gradient(180deg, #15120b, #050505 60%, #0b0907),
+        radial-gradient(circle at 70% 10%, rgba(212, 175, 55, .3), transparent 34%);
+      border: 1px solid rgba(212, 175, 55, .42);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .44);
+    }
+    .cast-card::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(212, 175, 55, .38);
+      pointer-events: none;
+      z-index: 4;
+    }
+    .cast-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, transparent 0 34%, rgba(255, 246, 190, .14) 38%, transparent 43% 100%),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, .04) 0 1px, transparent 1px 7px);
+      mix-blend-mode: screen;
+      opacity: .35;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .cast-card.card-champagne {
+      border-color: rgba(235, 202, 98, .58);
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, .1), transparent 30%),
+        linear-gradient(180deg, #1e170c, #080706 62%, #100b05),
+        radial-gradient(circle at 50% 0%, rgba(235, 202, 98, .38), transparent 34%);
+    }
+    .cast-card.card-diamond {
+      border-color: rgba(255, 255, 255, .42);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, .12), transparent 30%),
+        linear-gradient(180deg, #101112, #050505 60%, #0c0d0f),
+        radial-gradient(circle at 48% 3%, rgba(185, 214, 255, .28), transparent 34%);
+    }
+    .cast-card-inner {
+      position: relative;
+      z-index: 2;
+      min-height: 582px;
+      display: grid;
+      grid-template-rows: auto minmax(300px, 1fr) auto;
+      border: 1px solid rgba(212, 175, 55, .18);
+      background: rgba(7, 7, 7, .58);
+    }
+    .cast-rarity {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px 12px;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(212, 175, 55, .2);
+    }
+    .cast-photo {
+      position: relative;
+      height: 328px;
+      overflow: hidden;
+      background: #0a0a0a;
+      border-bottom: 1px solid rgba(212, 175, 55, .26);
+    }
+    .cast-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: saturate(.92) contrast(1.04);
+    }
+    .cast-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .04) 0%, rgba(0, 0, 0, .08) 42%, rgba(5, 5, 5, .76) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, .55), transparent 28%, transparent 72%, rgba(0, 0, 0, .52));
+    }
+    .cast-photo-label {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, .86);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .cast-photo-label::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .cast-body {
+      padding: 18px 16px 16px;
+      background:
+        linear-gradient(180deg, rgba(7, 7, 7, .86), rgba(8, 7, 5, .98)),
+        radial-gradient(circle at 84% 12%, rgba(212, 175, 55, .16), transparent 32%);
+    }
+    .cast-name {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 12px;
+      margin: 0 0 16px;
+      font-family: var(--serif);
+      font-size: 38px;
+      line-height: 1;
+      font-weight: 400;
+    }
+    .cast-name span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .grade-badge {
+      align-self: start;
+      min-width: 46px;
+      padding: 7px 8px 6px;
+      border: 1px solid rgba(212, 175, 55, .38);
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .cast-stats {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(212, 175, 55, .18);
+    }
+    .cast-stat {
+      min-height: 64px;
+      padding: 11px;
+      background: rgba(9, 9, 9, .84);
+    }
+    .cast-stat b {
+      display: block;
+      color: var(--gold);
+      font-size: 20px;
+      line-height: 1;
+    }
+    .cast-stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .cast-tags {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .cast-tags span {
+      padding: 6px 8px;
+      border: 1px solid rgba(212, 175, 55, .18);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .cast-card-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+      padding-top: 12px;
+      color: rgba(245, 240, 232, .62);
+      border-top: 1px solid rgba(212, 175, 55, .14);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid rgba(212, 175, 55, .16);
+      background: #0d0d0d;
+    }
+    table {
+      width: 100%;
+      min-width: 980px;
+      border-collapse: collapse;
+      font-size: 12px;
+      color: #d7d0c3;
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(212, 175, 55, .1);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      color: var(--gold);
+      background: #12110f;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    td code {
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .assumption-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-bottom: 18px;
+      background: rgba(212, 175, 55, .14);
+      border: 1px solid rgba(212, 175, 55, .14);
+    }
+    .assumption {
+      padding: 22px;
+      background: #11100e;
+    }
+    .assumption b {
+      display: block;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 400;
+      margin-bottom: 9px;
+    }
+    .assumption span {
+      display: block;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .assumption small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .revenue-table {
+      margin: 18px 0;
+      overflow-x: auto;
+      border: 1px solid rgba(212, 175, 55, .16);
+      background: #0d0d0d;
+    }
+    .revenue-table table {
+      min-width: 760px;
+    }
+    .revenue-note {
+      margin: 16px 0 24px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+    .scenario {
+      padding: 26px;
+      background: linear-gradient(180deg, #171511, #100f0d);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .scenario h3 {
+      margin: 0 0 18px;
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--gold);
+    }
+    .scenario dl {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px 18px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .scenario dd {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 34px 36px;
+      color: var(--dim);
+      border-top: 1px solid rgba(212, 175, 55, .1);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    @media (max-width: 1050px) {
+      .nav { padding: 0 22px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { padding: 64px 28px; border-right: 0; }
+      .hero-art { min-height: 58vw; }
+      .section-head, .showcase, .distribution { grid-template-columns: 1fr; }
+      .commercial-visual { grid-template-columns: 1fr; }
+      .commercial-copy { order: 2; }
+      .commercial-visual img { min-height: 300px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .rarity-ladder { grid-template-columns: repeat(2, 1fr); }
+      .flow { grid-template-columns: repeat(2, 1fr); }
+      .assumption-grid { grid-template-columns: repeat(2, 1fr); }
+      .sample-table, .guardrails { grid-template-columns: repeat(2, 1fr); }
+      .family-grid { grid-template-columns: repeat(2, 1fr); }
+      .cast-grid, .scenario-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .brand strong { font-size: 23px; }
+      .brand span { display: none; }
+      section { padding: 68px 18px; }
+      .hero-copy { padding: 52px 22px; }
+      .hero-metrics, .product-grid, .pool-grid, .rarity-ladder, .flow, .sample-table, .guardrails { grid-template-columns: 1fr; }
+      .commercial-copy { padding: 26px 22px; }
+      .commercial-visual img { min-height: 240px; }
+      .assumption-grid { grid-template-columns: 1fr; }
+      .family-grid { grid-template-columns: 1fr; }
+      .cast-grid, .scenario-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 108px 1fr 58px; gap: 10px; }
+      .auth-panel { padding: 24px; }
+    }
+  </style>
+</head>
+<body class="auth-locked">
+  <div class="auth-gate" id="authGate">
+    <section class="auth-panel" aria-labelledby="authTitle">
+      <div class="auth-mark">LUXE</div>
+      <h1 id="authTitle">Cards Concept</h1>
+      <p>Private concept deck. Please sign in to continue.</p>
+      <form class="auth-form" id="authForm">
+        <label>
+          Account
+          <input id="authUser" name="username" type="text" autocomplete="username" required>
+        </label>
+        <label>
+          Password
+          <input id="authPass" name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <div class="auth-error" id="authError" role="status" aria-live="polite"></div>
+        <button class="auth-submit" type="submit">Unlock Deck</button>
+      </form>
+    </section>
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#top" aria-label="LUXE Cards home">
+      <strong>LUXE</strong>
+      <span>Nightlife Trading Cards</span>
+    </a>
+    <div class="nav-links">
+      <a href="#product">Product</a>
+      <a href="#revenue">Revenue</a>
+      <a href="#cards">Cards</a>
+      <a href="#casts">Casts</a>
+      <a href="#distribution">Distribution</a>
+      <a href="#catalogue">Catalogue</a>
+      <a href="#nfc">NFC</a>
+      <a href="#kpi">KPI</a>
+      <a href="#guardrails">Rules</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-copy">
+      <div class="eyebrow">Season 1 · Private Concept</div>
+      <h1>LUXE <em>Cards</em></h1>
+      <p>
+        A premium sealed-pack trading card product for LUXE Shinjuku: collectible girl cards, NFC rewards,
+        champagne-driven utility cards, and a staff KPI game that turns table spending into a repeatable nightlife ritual.
+      </p>
+      <div class="hero-metrics" aria-label="Launch metrics">
+        <div class="hero-metric"><strong>300</strong><span>Season 1 boxes</span></div>
+        <div class="hero-metric"><strong>30K</strong><span>Total cards</span></div>
+        <div class="hero-metric"><strong>100</strong><span>Card designs</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="assets/luxe-cards-hero.png" alt="Generated LUXE trading card box, pack, and card mockups">
+    </div>
+  </header>
+
+  <main>
+    <section id="product">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Commercial structure</div>
+            <h2>Easy to sell at the table.</h2>
+          </div>
+          <p>
+            The product keeps the customer offer simple while hiding enough depth underneath for collecting,
+            swapping, staff selling, repeat visits, and rare-card hype.
+          </p>
+        </div>
+        <div class="commercial-visual">
+          <img src="assets/luxe-full-box-set.png" alt="Generated LUXE Cards full box set with ten booster packs and sample cards">
+          <div class="commercial-copy">
+            <strong>Full box hero product</strong>
+            <h3>A real opening moment, not just a coupon pack.</h3>
+            <p>
+              The full box is designed to feel like a premium trading-card display set: ten sealed packs,
+              one hundred cards, visible NFC value, and enough theatre for staff to upsell at the table.
+            </p>
+            <ul>
+              <li>10 sealed packs per box</li>
+              <li>100 cards per opening</li>
+              <li>At least one Gold card guaranteed</li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-grid">
+          <div class="product-card"><b>¥1,500</b><strong>Single pack</strong><span>Impulse buy for first-time customers or casual add-on during a table session.</span></div>
+          <div class="product-card"><b>¥10,000</b><strong>Full box</strong><span>Ten packs, one hundred cards, stronger opening moment, and at least one Gold card guaranteed.</span></div>
+          <div class="product-card"><b>10</b><strong>Cards per pack</strong><span>Seven White cards plus three Special cards, including at least one redeemable card.</span></div>
+          <div class="product-card"><b>3</b><strong>Special cards</strong><span>Discount, action, mission, Bling Girl, Champagne, or Black Diamond cards with NFC tracking.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="revenue">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Business case model</div>
+            <h2>Cards should sell more nights, not only more cards.</h2>
+          </div>
+          <p>
+            Partner focus: how many reward cards create cost, how many discount cards trigger champagne or table spend,
+            and how mission cards bring customers back. 以下 projection 用官網 price list + 你提供嘅 daily revenue 作簡單模型。
+          </p>
+        </div>
+        <div class="assumption-grid">
+          <div class="assumption"><b>¥5.0M</b><span>Current daily revenue</span><small>Given operating reference: around five active hours per day.</small></div>
+          <div class="assumption"><b>¥1.0M</b><span>Revenue per hour</span><small>Useful anchor for management: card impact should be measured against bar productivity.</small></div>
+          <div class="assumption"><b>20+</b><span>Seat capacity</span><small>About 150 possible 40-min seat sessions across five hours if fully rotated.</small></div>
+          <div class="assumption"><b>¥33K</b><span>Avg seat session</span><small>Estimated ¥5.0M / 150 seat sessions, before detailed POS data.</small></div>
+        </div>
+        <div class="revenue-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Official price anchor</th>
+                <th>Website price list</th>
+                <th>How cards stimulate existing LUXE sales</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Main Floor set</td>
+                <td>¥13,000 / 40 min</td>
+                <td>Return mission and guest pass cards push another 40-min visit instead of only one-night discount.</td>
+              </tr>
+              <tr>
+                <td>VIP Room set</td>
+                <td>¥27,000 / 40 min</td>
+                <td>VIP assist / table upgrade cards become upsell prompts when room is available.</td>
+              </tr>
+              <tr>
+                <td>Cast nomination</td>
+                <td>+¥4,000 / 40 min</td>
+                <td>Girl cards and collection missions give customers a reason to nominate or ask for specific casts.</td>
+              </tr>
+              <tr>
+                <td>Cast drinks</td>
+                <td>¥3,000-¥4,000</td>
+                <td>Action cards such as toast, dice, photo, and signature moments should attach to cast drinks.</td>
+              </tr>
+              <tr>
+                <td>Champagne</td>
+                <td>From ¥40,000+</td>
+                <td>Champagne 20 / BOGO / ceremony cards should be gated by bottle order, cap, and staff approval.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="revenue-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Average full box contents</th>
+                <th>Cards per box</th>
+                <th>Commercial role</th>
+                <th>Cost control</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Discount / wine trigger cards</td>
+                <td>~9.8</td>
+                <td>Champagne discount, vodka set with minimum spend, VIP assist, guest return pass.</td>
+                <td>Expiry, no stacking, selected bottles only, one redemption per table/night.</td>
+              </tr>
+              <tr>
+                <td>Gift cards</td>
+                <td>~2.5</td>
+                <td>Small gift, signature card, ceremony moment, or top-tier season celebration.</td>
+                <td>Mostly low-cost; high-tier gifts require management approval.</td>
+              </tr>
+              <tr>
+                <td>Action cards</td>
+                <td>~8.8</td>
+                <td>Toast, song, dice, photo, signature, champagne call, consent-based premium moments.</td>
+                <td>Staff approval, cast consent, substitute reward if declined.</td>
+              </tr>
+              <tr>
+                <td>Mission / return visit cards</td>
+                <td>~14.7</td>
+                <td>Bring card back next visit, collect cast cards, complete three visits in season.</td>
+                <td>Only creates value when customer returns or increases spend.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="revenue-note">
+          Projection logic: 300 boxes create ¥3.0M direct card sales, but the stronger business case is the extra champagne,
+          VIP, nomination, cast drink, extension, and repeat-visit spend triggered by the card content. Promo liability is
+          estimated separately so management can see that the cards are not simply giving away margin. 中文重點：卡牌係 sales trigger，
+          唔係 coupon book；gift/discount 必須綁 minimum spend、有效期、不可疊加。
+        </p>
+        <div class="scenario-grid">
+          <article class="scenario">
+            <h3>Conservative</h3>
+            <dl>
+              <dt>Boxes sold</dt><dd>150</dd>
+              <dt>Card sales</dt><dd>¥1.5M</dd>
+              <dt>Bar sales triggered</dt><dd>¥3.2M</dd>
+              <dt>Promo liability</dt><dd>-¥0.4M</dd>
+              <dt>Net gross impact</dt><dd>¥4.3M</dd>
+              <dt>Daily revenue equivalent</dt><dd>0.9 day</dd>
+            </dl>
+          </article>
+          <article class="scenario">
+            <h3>Base</h3>
+            <dl>
+              <dt>Boxes sold</dt><dd>300</dd>
+              <dt>Card sales</dt><dd>¥3.0M</dd>
+              <dt>Bar sales triggered</dt><dd>¥9.8M</dd>
+              <dt>Promo liability</dt><dd>-¥1.2M</dd>
+              <dt>Net gross impact</dt><dd>¥11.6M</dd>
+              <dt>Daily revenue equivalent</dt><dd>2.3 days</dd>
+            </dl>
+          </article>
+          <article class="scenario">
+            <h3>Aggressive</h3>
+            <dl>
+              <dt>Boxes sold</dt><dd>300 + packs</dd>
+              <dt>Card sales</dt><dd>¥3.9M</dd>
+              <dt>Bar sales triggered</dt><dd>¥16.5M</dd>
+              <dt>Promo liability</dt><dd>-¥2.1M</dd>
+              <dt>Net gross impact</dt><dd>¥18.3M</dd>
+              <dt>Daily revenue equivalent</dt><dd>3.7 days</dd>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cards">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Generated design direction</div>
+            <h2>Closer to the official LUXE mood.</h2>
+          </div>
+          <p>
+            Based on the official site direction: black base, champagne-gold accents, serif luxury type,
+            cast-card photography, VIP atmosphere, and a clean Shinjuku premium nightlife tone.
+          </p>
+        </div>
+        <div class="family-grid">
+          <article class="family-panel">
+            <div class="family-face photo face-white">
+              <img src="assets/generated-casts/sakura-regenerated-v2.jpg" alt="White Girl Card sample face">
+              <div class="face-top"><span>White Girl</span><span>No NFC</span></div>
+              <div class="face-bottom"><span>Sakura<br><b>White</b></span><span>Base profile</span></div>
+            </div>
+            <h3>White Girl Cards</h3>
+            <p>Common girl profile cards that give the pack volume, collection habit, and trading behavior without creating redemption cost.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>Easy collecting, swapping, and conversation starter with casts.</span></div>
+              <div><strong>Business role</strong><span>Low-cost content that makes each pack feel full.</span></div>
+              <div><strong>Control</strong><span>No NFC, no redemption, no direct cost liability.</span></div>
+            </div>
+          </article>
+          <article class="family-panel">
+            <div class="family-face photo">
+              <img src="assets/generated-casts/mashiro-regenerated-v2.jpg" alt="Bling Girl Card sample face">
+              <div class="face-top"><span>Bling Girl</span><span>NFC · 001/003</span></div>
+              <div class="face-bottom"><span>Mashiro<br><b>Bling</b></span><span>KPI chase</span></div>
+            </div>
+            <h3>Bling Girl Cards</h3>
+            <p>Ultra-limited NFC girl cards. Each girl can have only three Bling copies in Season 1, controlling how many full-set winners can exist.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>Rare chase card, trading object, and status signal.</span></div>
+              <div><strong>Business role</strong><span>Drives box opening, repeat purchase, and cast-led selling.</span></div>
+              <div><strong>Control</strong><span>NFC owner tracking, transfer history, and collection verification.</span></div>
+            </div>
+          </article>
+          <article class="family-panel">
+            <div class="family-face">
+              <div class="face-top"><span>Gold Discount</span><span>NFC</span></div>
+              <div class="face-center"><b>Champagne 20</b><span>20% off selected bottle</span></div>
+              <div class="face-bottom"><span>Valid this season<br><b>Gold</b></span><i class="face-chip"></i></div>
+            </div>
+            <h3>Discount / Gift Cards</h3>
+            <p>Reward cards that stimulate champagne, vodka set, VIP assist, birthday package, guest return, or small gift redemption.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>Immediate perceived value and reason to order more tonight or return later.</span></div>
+              <div><strong>Business role</strong><span>Turns card pulls into wine/table spending triggers.</span></div>
+              <div><strong>Control</strong><span>Minimum spend, expiry, no stacking, staff redemption only.</span></div>
+            </div>
+          </article>
+          <article class="family-panel">
+            <div class="family-face">
+              <div class="face-top"><span>Champagne Action</span><span>NFC</span></div>
+              <div class="face-center"><b>Toast Moment</b><span>Invite a cast for one toast</span></div>
+              <div class="face-bottom"><span>Consent required<br><b>Action</b></span><i class="face-chip"></i></div>
+            </div>
+            <h3>Action Cards</h3>
+            <p>Experience cards that create table interaction: toast, song choice, dice game, photo moment, signature, champagne call, or premium pose.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>Feels playful and personal, not just a financial discount.</span></div>
+              <div><strong>Business role</strong><span>Attaches naturally to cast drinks, nominations, and champagne moments.</span></div>
+              <div><strong>Control</strong><span>Cast consent, staff approval, substitute reward if declined.</span></div>
+            </div>
+          </article>
+          <article class="family-panel">
+            <div class="family-face">
+              <div class="face-top"><span>Venue Mission</span><span>Stamp</span></div>
+              <div class="face-center"><b>Return Night</b><span>Bring any card back next visit</span></div>
+              <div class="face-bottom"><span>Collect · Visit · Unlock<br><b>Mission</b></span><i class="face-chip"></i></div>
+            </div>
+            <h3>Mission / Venue Cards</h3>
+            <p>Progress cards that turn the product into a small game: collect girls, complete visits, unlock stamps, or pair cards for a reward.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>Creates goals beyond tonight and encourages swapping with other customers.</span></div>
+              <div><strong>Business role</strong><span>Pushes return visits, longer engagement, and future table spend.</span></div>
+              <div><strong>Control</strong><span>Reward only unlocks after verified visit, spend, or collection condition.</span></div>
+            </div>
+          </article>
+          <article class="family-panel">
+            <div class="family-face face-diamond">
+              <div class="face-top"><span>Black Diamond</span><span>NFC · VIP</span></div>
+              <div class="face-center"><b>Season Winner</b><span>Management approval only</span></div>
+              <div class="face-bottom"><span>Event reward<br><b>1 of 30</b></span><i class="face-chip"></i></div>
+            </div>
+            <h3>Black Diamond Cards</h3>
+            <p>The rarest tier for VIP moments, season winner claims, ultra-limited celebration rewards, and headline partner storytelling.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>High-status pull that creates attention and social proof.</span></div>
+              <div><strong>Business role</strong><span>Builds collector hype and gives management a controlled premium reward layer.</span></div>
+              <div><strong>Control</strong><span>Very low print qty, serial number, NFC validation, management approval.</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="casts">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Official cast data layer</div>
+            <h2>Real profiles become collectible stats.</h2>
+          </div>
+          <p>
+            Official LUXE cast data supplies the profile layer: stage name, romanized name, grade, height,
+            cup size, English level, appearance tags, and service style. The sample cards below use generated
+            collectible portraits shaped from the public official cast references; final commercial usage should be approved by LUXE before printing.
+          </p>
+        </div>
+        <div class="cast-grid">
+          <article class="cast-card card-bling">
+            <div class="cast-card-inner">
+              <div class="cast-rarity"><span>Bling Girl</span><span>NFC · BG01 · 001/003</span></div>
+              <div class="cast-photo">
+                <img src="assets/generated-casts/sakura-regenerated-v2.jpg" alt="Sakura AI collectible portrait based on official LUXE cast reference">
+                <span class="cast-photo-label">AI collectible portrait</span>
+              </div>
+              <div class="cast-body">
+                <h3 class="cast-name">Sakura <span>さくら · Season 01</span><b class="grade-badge">A+</b></h3>
+                <div class="cast-stats">
+                  <div class="cast-stat"><b>B</b><span>Cup</span></div>
+                  <div class="cast-stat"><b>BASIC</b><span>English</span></div>
+                  <div class="cast-stat"><b>Kirei</b><span>Look</span></div>
+                  <div class="cast-stat"><b>Party</b><span>Service</span></div>
+                </div>
+                <div class="cast-tags"><span>Beauty</span><span>Cute</span><span>Listener</span><span>Drinks</span></div>
+                <div class="cast-card-footer"><span>LUXE Shinjuku</span><span>1 of 3</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="cast-card card-champagne">
+            <div class="cast-card-inner">
+              <div class="cast-rarity"><span>Champagne Girl</span><span>NFC · BG03 · 002/003</span></div>
+              <div class="cast-photo">
+                <img src="assets/generated-casts/mashiro-regenerated-v2.jpg" alt="Mashiro AI collectible portrait based on official LUXE cast reference">
+                <span class="cast-photo-label">AI collectible portrait</span>
+              </div>
+              <div class="cast-body">
+                <h3 class="cast-name">Mashiro <span>ましろ · Season 01</span><b class="grade-badge">A-</b></h3>
+                <div class="cast-stats">
+                  <div class="cast-stat"><b>166</b><span>Height</span></div>
+                  <div class="cast-stat"><b>G</b><span>Cup</span></div>
+                  <div class="cast-stat"><b>Model</b><span>Look</span></div>
+                  <div class="cast-stat"><b>28</b><span>Age</span></div>
+                </div>
+                <div class="cast-tags"><span>Sexy</span><span>Model</span><span>Adult</span><span>Drinks</span></div>
+                <div class="cast-card-footer"><span>LUXE Shinjuku</span><span>2 of 3</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="cast-card card-diamond">
+            <div class="cast-card-inner">
+              <div class="cast-rarity"><span>Black Diamond</span><span>NFC · BG04 · 003/003</span></div>
+              <div class="cast-photo">
+                <img src="assets/generated-casts/riri-regenerated-v2.jpg" alt="Riri AI collectible portrait based on official LUXE cast reference">
+                <span class="cast-photo-label">AI collectible portrait</span>
+              </div>
+              <div class="cast-body">
+                <h3 class="cast-name">Riri <span>りり · Season 01</span><b class="grade-badge">A</b></h3>
+                <div class="cast-stats">
+                  <div class="cast-stat"><b>165</b><span>Height</span></div>
+                  <div class="cast-stat"><b>F</b><span>Cup</span></div>
+                  <div class="cast-stat"><b>BASIC</b><span>English</span></div>
+                  <div class="cast-stat"><b>VIP</b><span>Style</span></div>
+                </div>
+                <div class="cast-tags"><span>Elegant</span><span>Big Sister</span><span>Sweet</span><span>Free</span></div>
+                <div class="cast-card-footer"><span>LUXE Shinjuku</span><span>3 of 3</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="table-wrap">
+          <table id="castTable" aria-label="Official LUXE cast database"></table>
+        </div>
+      </div>
+    </section>
+
+    <section id="distribution">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">30,000 card economy</div>
+            <h2>Controlled scarcity.</h2>
+          </div>
+          <p>
+            Season 1 is designed around 300 boxes and 30,000 printed cards. White cards create volume.
+            Special cards create spending utility. Bling Girls Cards create the chase.
+          </p>
+        </div>
+        <div class="distribution">
+          <div class="bars">
+            <div class="bar-row"><span>White</span><div class="bar"><span style="width:70%"></span></div><b>21,000</b></div>
+            <div class="bar-row"><span>Silver</span><div class="bar"><span style="width:21%"></span></div><b>6,300</b></div>
+            <div class="bar-row"><span>Gold</span><div class="bar"><span style="width:6.5%"></span></div><b>1,950</b></div>
+            <div class="bar-row"><span>Champagne</span><div class="bar"><span style="width:2%"></span></div><b>600</b></div>
+            <div class="bar-row"><span>Bling Girls</span><div class="bar"><span style="width:.2%"></span></div><b>60</b></div>
+            <div class="bar-row"><span>Black Diamond</span><div class="bar"><span style="width:.3%"></span></div><b>90</b></div>
+          </div>
+          <div class="pool-grid">
+            <div class="pool-item"><strong>60</strong><span>Girls Card designs: 20 girls x 3 designs each, with two White cards and one Bling card per girl.</span></div>
+            <div class="pool-item"><strong>15</strong><span>Discount / Gift designs: champagne discounts, free set offers, entry benefits, and next-visit hooks.</span></div>
+            <div class="pool-item"><strong>10</strong><span>Action Card designs: flirty table interactions controlled by consent and staff approval.</span></div>
+            <div class="pool-item"><strong>15</strong><span>Mission / Venue / Combo designs: return visits, set collection, and VIP progression.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogue">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">100-design catalogue</div>
+            <h2>The complete Season 1 card pool.</h2>
+          </div>
+          <p>
+            Season 1 uses 20 launch girls from the 31 official cast profiles. Each selected girl gets
+            two White cards and one ultra-limited Bling card. The remaining 40 designs drive spend, action,
+            missions, and venue progression.
+          </p>
+        </div>
+        <div class="table-wrap">
+          <table id="catalogueTable" aria-label="Season 1 card catalogue"></table>
+        </div>
+      </div>
+    </section>
+
+    <section id="rarity">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Rarity ladder</div>
+            <h2>Nightlife language, not game jargon.</h2>
+          </div>
+          <p>
+            The tiers use terms that feel natural inside LUXE: White, Silver, Gold, Champagne, and Black Diamond.
+          </p>
+        </div>
+        <div class="rarity-ladder">
+          <article class="tier"><div class="level">Base</div><h3>White</h3><p>Common no-NFC cards. Mostly Girl Cards and venue flavor cards.</p></article>
+          <article class="tier"><div class="level">Special</div><h3>Silver</h3><p>Low-cost rewards, light utility, simple missions, and entry-level benefits.</p></article>
+          <article class="tier"><div class="level">Box hit</div><h3>Gold</h3><p>Every box gets at least one. Stronger discounts, Bling Girl cards, and core rewards.</p></article>
+          <article class="tier"><div class="level">Premium</div><h3>Champagne</h3><p>Higher-impact rewards such as champagne offers, table upgrades, and premium action cards.</p></article>
+          <article class="tier"><div class="level">Ultra rare</div><h3>Black Diamond</h3><p>Season headline cards for VIP moments, limited ceremonies, or winner-level rewards.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="nfc">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">NFC ownership layer</div>
+            <h2>Special cards become trackable assets.</h2>
+          </div>
+          <p>
+            White cards stay simple. Every Special card gets NFC so LUXE can verify cards,
+            register owners, handle transfers, redeem benefits, and track KPI progress.
+          </p>
+        </div>
+        <div class="flow">
+          <div class="flow-step"><b>01</b><strong>Tap to verify</strong><span>Show season, serial, rarity, card type, and authenticity.</span></div>
+          <div class="flow-step"><b>02</b><strong>Claim owner</strong><span>Customer or girl registers card ownership in the LUXE card backend.</span></div>
+          <div class="flow-step"><b>03</b><strong>Transfer</strong><span>Customer gives a card to a girl, girls exchange cards, or collectors trade cards.</span></div>
+          <div class="flow-step"><b>04</b><strong>Redeem / KPI</strong><span>Staff redeems utility cards. Bling Girls Cards update collection progress.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kpi">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Staff KPI mechanic</div>
+            <h2>Girls sell the game, not only the box.</h2>
+          </div>
+          <p>
+            Each girl has one ultra-limited Bling Girls Card. If there are 20 girls and only three Bling copies
+            per girl, the full collection has a hard maximum of three possible winners in Season 1.
+          </p>
+        </div>
+        <div class="product-grid">
+          <div class="product-card"><b>5</b><strong>Bling cards</strong><span>Small bonus tier. Keeps KPI reachable early in the season.</span></div>
+          <div class="product-card"><b>10</b><strong>Bling cards</strong><span>Medium tier. Encourages repeat selling and exchange behavior.</span></div>
+          <div class="product-card"><b>15</b><strong>Bling cards</strong><span>High tier. Creates serious chase and table conversation.</span></div>
+          <div class="product-card"><b>20</b><strong>Full set</strong><span>Jackpot tier. All twenty girls collected, with maximum three winners by print control.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="samples">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Sample card content</div>
+            <h2>Cards customers can understand instantly.</h2>
+          </div>
+          <p>
+            The wording should stay clear, premium, and staff-controlled. Anything flirty is an invitation,
+            not a right, and should always have an alternative reward.
+          </p>
+        </div>
+        <div class="sample-table">
+          <article class="sample-card"><span class="tag">Gold Discount</span><h3>Champagne 20</h3><p>20% off selected champagne tonight or on the next visit. Not stackable. Staff redemption only.</p></article>
+          <article class="sample-card"><span class="tag">Champagne Action</span><h3>Photo Moment</h3><p>Invite one cast member for one approved photo moment. Consent required. Alternative reward available.</p></article>
+          <article class="sample-card"><span class="tag">Silver Gift</span><h3>Vodka Set</h3><p>Free vodka set with qualifying table spend. One redemption per table per night.</p></article>
+          <article class="sample-card"><span class="tag">Mission</span><h3>Three Nights</h3><p>Visit three nights within the season and unlock a member stamp or limited mission reward.</p></article>
+          <article class="sample-card"><span class="tag">Bling Girl</span><h3>Season Cast Card</h3><p>One of three NFC copies for a specific girl. Used for collection, trading, and staff KPI progress.</p></article>
+          <article class="sample-card"><span class="tag">Black Diamond</span><h3>VIP Ceremony</h3><p>Ultra-rare season card. Unlocks a controlled VIP celebration package or headline reward.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="guardrails">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Operating guardrails</div>
+            <h2>Designed to protect the venue.</h2>
+          </div>
+          <p>
+            The system should feel fun and premium while staying controlled, consent-based, and operationally manageable.
+          </p>
+        </div>
+        <div class="guardrails">
+          <div class="guardrail"><strong>Consent first</strong><span>Action cards are requests. Girls may refuse and staff can substitute another benefit.</span></div>
+          <div class="guardrail"><strong>Staff redemption</strong><span>Discounts, gifts, and actions are validated by staff through NFC to prevent abuse.</span></div>
+          <div class="guardrail"><strong>No stacking</strong><span>Rewards cannot stack unless a specific combo card explicitly permits it.</span></div>
+          <div class="guardrail"><strong>Expiry by type</strong><span>Girls Cards remain permanent; reward and action cards expire by season or stated date.</span></div>
+          <div class="guardrail"><strong>Ownership history</strong><span>NFC transfer records prevent fake winners and fake KPI completion.</span></div>
+          <div class="guardrail"><strong>Legal review</strong><span>Japan reward mechanics, adult venue wording, and physical interaction rules need review before launch.</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    LUXE Cards v0.9 concept · generated card visuals · remaining work: final art, box dieline, print specs, backend prototype, compliance review
+  </footer>
+
+  <script>
+    (() => {
+      const casts = [
+        ["さくら","sakura","A+","", "B","", "BASIC","キレイ系 / カワイイ系","癒し・聞き上手 / 盛り上げ / お酒強い"],
+        ["さやか","sayaka","B-","27","C","160","BASIC","キレイ系 / ギャル・華やか系","盛り上げ / トーク・お笑い / お酒強い"],
+        ["ましろ","mashiro","A-","28","G","166","NG","キレイ系 / セクシー系 / お姉さん系 / モデル系","大人・お姉さん / お酒強い / 気配り / 盛り上げ"],
+        ["りり","riri","A","", "F","165","BASIC","キレイ系 / お姉さん系","盛り上げ / 癒し・聞き上手 / 甘えんぼ・妹 / 恋人気分 / お酒強い"],
+        ["えみり","emiri","B","", "B","150","NATIVE","ギャル・華やか系","癒し・聞き上手"],
+        ["セリナ","serina","A-","23","C","162","NATIVE","清楚・ナチュラル系","恋人気分 / お酒強い / 知的・教養"],
+        ["なみ","nami","A-","22","B","162","NG","カワイイ系 / 清楚・ナチュラル系","癒し・聞き上手 / 盛り上げ"],
+        ["はんな","hanna","B+","23","E","158","NG","カワイイ系 / 妹系","盛り上げ / トーク・お笑い"],
+        ["ひめか","himeka","A+","23","D","167","NG","キレイ系 / モデル系","盛り上げ / トーク・お笑い"],
+        ["まな","mana","B","23","E","158","NG","清楚・ナチュラル系","甘えんぼ・妹"],
+        ["みさき","misaki","B","22","E","161","BASIC","カワイイ系","トーク・お笑い"],
+        ["ゆずき","yuzuki","A","24","F","165","NG","カワイイ系 / 清楚・ナチュラル系","盛り上げ"],
+        ["りん","rin","A-","22","K","155","NG","カワイイ系","甘えんぼ・妹"],
+        ["ありな","arina","A+","", "E","165","CONVERSATIONAL","キレイ系 / カワイイ系","癒し・聞き上手 / 甘えんぼ・妹 / 知的・教養"],
+        ["いぶき","ibuki","A-","28","E","172","CONVERSATIONAL","キレイ系 / 清楚・ナチュラル系","恋人気分 / 気配り / 盛り上げ"],
+        ["かりな","karina","A+","22","E","158","NG","キレイ系 / モデル系 / カワイイ系","盛り上げ / トーク・お笑い / お酒強い / 個性派・自由"],
+        ["こずえ","kozue","B-","21","H","157","","",""],
+        ["さほ","saho","B+","21","F","164","BASIC","",""],
+        ["トワ","towa","B+","", "G","149","CONVERSATIONAL","セクシー系 / お姉さん系","お酒強い"],
+        ["なお","nao","A","21","E","165","CONVERSATIONAL","キレイ系","癒し・聞き上手 / 恋人気分"],
+        ["なの","nano","B-","", "F","163","NG","ギャル・華やか系","盛り上げ / 甘えんぼ・妹"],
+        ["まりあ","maria","B","", "D","153","CONVERSATIONAL","カワイイ系 / ギャル・華やか系 / 小動物系","盛り上げ / 癒し・聞き上手 / お酒強い / 気配り"],
+        ["みさ","misa","C","24","H","159","CONVERSATIONAL","セクシー系","盛り上げ / 癒し・聞き上手 / トーク・お笑い / お酒強い / 知的・教養"],
+        ["らら","rara","B+","23","G","154","NG","カワイイ系 / 小動物系","盛り上げ / 恋人気分"],
+        ["りあ","ria","B+","", "G","155","NATIVE","セクシー系 / 個性派","盛り上げ / お酒強い / トーク・お笑い"],
+        ["るる","ruru","B","24","D","157","NG","カワイイ系 / 妹系","トーク・お笑い / 盛り上げ"],
+        ["あるか","aruka","B","25","F","159","BASIC","清楚・ナチュラル系 / 小動物系","癒し・聞き上手 / 甘えんぼ・妹 / 恋人気分"],
+        ["せな","sena","B-","24","C","","CONVERSATIONAL","キレイ系 / お姉さん系","癒し・聞き上手 / 大人・お姉さん / お酒強い"],
+        ["ののか","nonoka","B-","22","C","160","NG","キレイ系 / 清楚・ナチュラル系","個性派・自由 / 癒し・聞き上手"],
+        ["りと","rito","A","", "B","160","NG","その他","その他"],
+        ["れい","rei","B","23","C","162","NG","カワイイ系","お酒強い / 盛り上げ"]
+      ];
+
+      const launchRoster = casts.slice(0, 20);
+      const utilityCards = [
+        ["D001","Discount","Silver","Free Shot Set","One free shot set with qualifying table spend.","420"],
+        ["D002","Discount","Silver","Mixer Upgrade","Free mixer upgrade for one bottle order.","420"],
+        ["D003","Discount","Silver","Next Visit ¥1,000","¥1,000 off next visit, no stacking.","420"],
+        ["D004","Discount","Silver","Entry Return","Free entry on a follow-up visit within season.","360"],
+        ["D005","Discount","Gold","Vodka Set","Free vodka set with minimum table spend.","180"],
+        ["D006","Discount","Gold","Champagne 20","20% off selected champagne.","150"],
+        ["D007","Discount","Gold","Table Upgrade","Priority table upgrade when available.","120"],
+        ["D008","Discount","Gold","Birthday Spark","Birthday visit champagne support package.","90"],
+        ["D009","Discount","Champagne","Buy One Get One","Selected champagne BOGO with cap and staff approval.","45"],
+        ["D010","Discount","Champagne","VIP Room Assist","VIP room upgrade support, subject to availability.","36"],
+        ["D011","Gift","Silver","LUXE Token","Collect three tokens for a season gift.","420"],
+        ["D012","Gift","Gold","Signature Pack","One signed souvenir card by selected cast.","120"],
+        ["D013","Gift","Champagne","Champagne Ceremony","Mini ceremony moment with staff coordination.","30"],
+        ["D014","Gift","Black Diamond","Season Celebration","Top-tier celebration package, management approval.","12"],
+        ["D015","Discount","Gold","Guest Return Pass","Bring a friend next visit and unlock table benefit.","120"],
+        ["A001","Action","Silver","Toast Moment","Invite a cast member for a toast moment. Consent required.","330"],
+        ["A002","Action","Silver","Song Choice","Cast selects one song or mood for the table.","330"],
+        ["A003","Action","Silver","Lucky Dice","One staff-approved dice mini game.","300"],
+        ["A004","Action","Gold","Photo Moment","Approved photo moment. Consent required; alternative reward available.","150"],
+        ["A005","Action","Gold","Signature Moment","Cast signs one card or season insert.","150"],
+        ["A006","Action","Gold","Sit Closer Moment","One song-length closer seating invitation. Consent required.","90"],
+        ["A007","Action","Champagne","Cheek Pose","Cheek pose / kiss-style pose by consent only; substitute reward if declined.","36"],
+        ["A008","Action","Champagne","Champagne Call","Cast leads a mini champagne call.","36"],
+        ["A009","Action","Black Diamond","VIP Spotlight","Staff-managed VIP spotlight moment.","9"],
+        ["A010","Action","Silver","Charm Question","Customer asks one approved profile question.","300"],
+        ["M001","Mission","White","Three Cast Whites","Collect three different White Girls Cards.","600"],
+        ["M002","Mission","White","Five Cast Whites","Collect five different White Girls Cards.","600"],
+        ["M003","Mission","White","Return Night","Bring any card back next visit for a stamp.","600"],
+        ["M004","Mission","Silver","Language Bonus","Collect a card from a cast with BASIC+ English level.","300"],
+        ["M005","Mission","Silver","Beauty Line","Collect three Kirei/Cute profile tags.","300"],
+        ["M006","Mission","Silver","Party Line","Collect three Moriage/Drink-strong service tags.","300"],
+        ["M007","Mission","Gold","A-Rank Hunt","Collect three A-grade cast cards.","120"],
+        ["M008","Mission","Gold","Bling Pair","Pair any Bling Girl Card with a Champagne Card.","90"],
+        ["M009","Mission","Champagne","Season Stamp","Complete three visits in one season.","36"],
+        ["M010","Mission","Black Diamond","Full Bling Claim","Full 20-girl Bling collection verification card.","3"],
+        ["V001","Venue","White","LUXE Shinjuku","Venue lore card for collection volume.","600"],
+        ["V002","Venue","White","Kabukicho Night","Venue lore card for collection volume.","600"],
+        ["V003","Venue","Silver","VIP Room","Venue feature card; pairs with upgrade rewards.","300"],
+        ["V004","Venue","Gold","Champagne Tower","Venue feature card; pairs with ceremony rewards.","90"],
+        ["V005","Venue","Champagne","Season Launch","Limited launch marker card.","30"]
+      ];
+
+      const renderTable = (id, headers, rows) => {
+        const table = document.getElementById(id);
+        if (!table) return;
+        table.innerHTML = `<thead><tr>${headers.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(cell => `<td>${cell || "-"}</td>`).join("")}</tr>`).join("")}</tbody>`;
+      };
+
+      renderTable("castTable", ["No.","Stage name","Romanized","Grade","Age","Cup","Height","English","Appearance","Service style"], casts.map((c, index) => [
+        String(index + 1).padStart(2, "0"), c[0], c[1], c[2], c[3], c[4], c[5] ? `${c[5]}cm` : "", c[6], c[7], c[8]
+      ]));
+
+      const girlCatalogue = launchRoster.flatMap((c, index) => {
+        const id = String(index + 1).padStart(2, "0");
+        const name = c[1].toUpperCase();
+        return [
+          [`G${id}A`, "Girls", "White", `${name} Day Profile`, `${c[0]} / ${c[1]} base profile card`, "420"],
+          [`G${id}B`, "Girls", "White", `${name} Night Profile`, `alternate base card with style tags`, "420"],
+          [`BG${id}`, "Girls", "Bling", `${name} Bling Girl`, `NFC chase card, 3 copies only`, "3"]
+        ];
+      });
+      const utilityQty = {
+        White: [840, 840, 840, 840, 840],
+        Silver: [485, 485, 485, 485, 485, 485, 485, 485, 485, 485, 485, 485, 480],
+        Gold: [163, 163, 163, 163, 163, 163, 163, 163, 163, 163, 163, 157],
+        Champagne: [86, 86, 86, 86, 86, 86, 84],
+        "Black Diamond": [30, 30, 30]
+      };
+      const utilityIndex = {};
+      const utilityCatalogue = utilityCards.map(row => {
+        const rarity = row[2];
+        utilityIndex[rarity] = utilityIndex[rarity] || 0;
+        const qty = utilityQty[rarity][utilityIndex[rarity]++];
+        return [...row.slice(0, 5), String(qty)];
+      });
+      renderTable("catalogueTable", ["ID","Category","Rarity","Card name","Function / content","Print qty"], [...girlCatalogue, ...utilityCatalogue]);
+
+      const accountName = "luxe";
+      const passwordHash = "c9275b7ededdc2fabca2e148182792aacb94c421e2545cb4ebb1a6658a41a52d";
+      const sessionKey = "luxe-cards-auth";
+      const gate = document.getElementById("authGate");
+      const form = document.getElementById("authForm");
+      const user = document.getElementById("authUser");
+      const pass = document.getElementById("authPass");
+      const error = document.getElementById("authError");
+
+      const unlock = () => {
+        document.body.classList.remove("auth-locked");
+        gate.remove();
+      };
+
+      const digest = async (value) => {
+        const data = new TextEncoder().encode(value);
+        const hash = await crypto.subtle.digest("SHA-256", data);
+        return Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2, "0")).join("");
+      };
+
+      if (sessionStorage.getItem(sessionKey) === "ok") {
+        unlock();
+        return;
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        error.textContent = "";
+        const validUser = user.value.trim().toLowerCase() === accountName;
+        const validPass = await digest(pass.value) === passwordHash;
+
+        if (validUser && validPass) {
+          sessionStorage.setItem(sessionKey, "ok");
+          unlock();
+          return;
+        }
+
+        pass.value = "";
+        error.textContent = "Incorrect account name or password.";
+        pass.focus();
+      });
+    })();
+  </script>
+</body>
+</html>
