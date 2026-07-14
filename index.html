@@ -709,6 +709,134 @@
       line-height: 1;
       white-space: nowrap;
     }
+    .gameplay-layout {
+      display: grid;
+      grid-template-columns: minmax(320px, .9fr) minmax(420px, 1.1fr);
+      gap: 28px;
+      align-items: start;
+    }
+    .playmat {
+      padding: 24px;
+      border: 1px solid rgba(212, 175, 55, .22);
+      background:
+        radial-gradient(circle at 50% 10%, rgba(212, 175, 55, .16), transparent 34%),
+        linear-gradient(180deg, #161411, #090909);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .34);
+    }
+    .playmat-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .playmat-title b {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .deck-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .mini-card {
+      position: relative;
+      aspect-ratio: 2.5 / 3.5;
+      min-height: 122px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, .34);
+      border-radius: 6px;
+      background: linear-gradient(180deg, #221c12, #070707);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06);
+    }
+    .mini-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .82;
+    }
+    .mini-card span {
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      color: var(--gold);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px #000;
+    }
+    .round-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .round-card {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid rgba(212, 175, 55, .16);
+      background: rgba(255, 255, 255, .035);
+    }
+    .round-card strong {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 400;
+    }
+    .round-card span {
+      color: var(--ink);
+      font-size: 13px;
+    }
+    .round-card b {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .game-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .game-role {
+      padding: 18px;
+      border: 1px solid rgba(212, 175, 55, .16);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .018));
+    }
+    .game-role h3 {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+    }
+    .game-role p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .game-role small {
+      display: block;
+      margin-top: 14px;
+      color: var(--ink);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
 
     .distribution {
       display: grid;
@@ -1243,7 +1371,7 @@
       .hero { grid-template-columns: 1fr; }
       .hero-copy { padding: 64px 28px; border-right: 0; }
       .hero-art { min-height: 58vw; }
-      .section-head, .showcase, .distribution { grid-template-columns: 1fr; }
+      .section-head, .showcase, .distribution, .gameplay-layout { grid-template-columns: 1fr; }
       .commercial-visual { grid-template-columns: 1fr; }
       .commercial-copy { order: 2; }
       .commercial-visual img { min-height: 300px; }
@@ -1251,7 +1379,7 @@
       .rarity-ladder { grid-template-columns: repeat(2, 1fr); }
       .flow { grid-template-columns: repeat(2, 1fr); }
       .assumption-grid { grid-template-columns: repeat(2, 1fr); }
-      .sample-table, .guardrails { grid-template-columns: repeat(2, 1fr); }
+      .sample-table, .guardrails, .game-card-grid { grid-template-columns: repeat(2, 1fr); }
       .family-grid { grid-template-columns: repeat(2, 1fr); }
       .cast-grid, .scenario-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -1260,12 +1388,14 @@
       .brand span { display: none; }
       section { padding: 68px 18px; }
       .hero-copy { padding: 52px 22px; }
-      .hero-metrics, .product-grid, .pool-grid, .rarity-ladder, .flow, .sample-table, .guardrails { grid-template-columns: 1fr; }
+      .hero-metrics, .product-grid, .pool-grid, .rarity-ladder, .flow, .sample-table, .guardrails, .game-card-grid { grid-template-columns: 1fr; }
       .commercial-copy { padding: 26px 22px; }
       .commercial-visual img { min-height: 240px; }
       .assumption-grid { grid-template-columns: 1fr; }
       .family-grid { grid-template-columns: 1fr; }
       .cast-grid, .scenario-grid { grid-template-columns: 1fr; }
+      .deck-row { grid-template-columns: repeat(3, 1fr); }
+      .round-card { grid-template-columns: 1fr; }
       .bar-row { grid-template-columns: 108px 1fr 58px; gap: 10px; }
       .auth-panel { padding: 24px; }
     }
@@ -1300,6 +1430,7 @@
     <div class="nav-links">
       <a href="#product">Product</a>
       <a href="#revenue">Revenue</a>
+      <a href="#gameplay">Gameplay</a>
       <a href="#cards">Cards</a>
       <a href="#casts">Casts</a>
       <a href="#distribution">Distribution</a>
@@ -1501,6 +1632,109 @@
               <dt>Daily revenue equivalent</dt><dd>3.7 days</dd>
             </dl>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gameplay">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Playable table game layer</div>
+            <h2>From trading cards to a drinking-table match.</h2>
+          </div>
+          <p>
+            Inspired by Japanese cast-card battle systems, LUXE Cards should become a playable 15-card table game:
+            simple enough for customers after drinks, but commercial enough to trigger champagne, cast drinks, VIP seating,
+            and repeat visits. 中文重點：卡唔只係收藏，而係每晚可以即場玩。
+          </p>
+        </div>
+        <div class="gameplay-layout">
+          <div class="playmat">
+            <div class="playmat-title"><span>LUXE Table Match</span><b>15-card deck</b></div>
+            <div class="deck-row" aria-label="Sample mini deck">
+              <div class="mini-card"><img src="assets/generated-casts/sakura-regenerated-v2.jpg" alt=""><span>Girl</span></div>
+              <div class="mini-card"><img src="assets/generated-casts/mashiro-regenerated-v2.jpg" alt=""><span>Bling</span></div>
+              <div class="mini-card"><img src="assets/luxe-full-box-set.png" alt=""><span>Drink</span></div>
+              <div class="mini-card"><img src="assets/luxe-cards-hero.png" alt=""><span>Venue</span></div>
+              <div class="mini-card"><img src="assets/luxe-black-diamond-premium-card.png" alt=""><span>VIP</span></div>
+            </div>
+            <div class="round-grid">
+              <div class="round-card"><strong>1st</strong><span>Both sides play one Girl Card face down, then reveal together with a LUXE Match call.</span><b>Open</b></div>
+              <div class="round-card"><strong>2nd</strong><span>Add Drink, Venue, or Action support cards to beat the opponent's table power.</span><b>Support</b></div>
+              <div class="round-card"><strong>3rd</strong><span>Best of three rounds wins the match. Reward can be a small perk, toast, or next-round challenge.</span><b>Win 2</b></div>
+            </div>
+          </div>
+          <div class="game-card-grid">
+            <article class="game-role">
+              <h3>Girl Cards</h3>
+              <p>Main battle cards with face, name, rarity, type, zone, 1st/2nd/final round power, and support power.</p>
+              <small>Collector value + gameplay identity</small>
+            </article>
+            <article class="game-role">
+              <h3>Drink Cards</h3>
+              <p>Support cards tied to champagne, vodka set, cast drinks, or bottle orders. Buying the drink can unlock extra power.</p>
+              <small>Wine sales trigger</small>
+            </article>
+            <article class="game-role">
+              <h3>Venue Cards</h3>
+              <p>Area cards such as Main Floor, VIP Room, Champagne Tower, and Shinjuku Midnight. Matching a girl's zone gives a bonus.</p>
+              <small>Seat and room upsell</small>
+            </article>
+            <article class="game-role">
+              <h3>Action Cards</h3>
+              <p>Game actions first: draw, block, double, steal support. Table actions remain consent-based with staff approval.</p>
+              <small>Interaction without losing control</small>
+            </article>
+            <article class="game-role">
+              <h3>Mission Cards</h3>
+              <p>Bring the card back, complete three visits, collect five girls, or play three matches in one night for a reward.</p>
+              <small>Return-visit mechanic</small>
+            </article>
+            <article class="game-role">
+              <h3>Black Diamond</h3>
+              <p>Premium rule-breaker cards: VIP ceremony, one-time power override, season jackpot, or private event invitation.</p>
+              <small>Grail chase + VIP theatre</small>
+            </article>
+          </div>
+        </div>
+        <div class="revenue-table" style="margin-top: 30px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Suggested 15-card table deck</th>
+                <th>Cards</th>
+                <th>Why it works during drinking</th>
+                <th>Revenue role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Girl / Bling Girl Cards</td>
+                <td>6</td>
+                <td>Easy emotional anchor: customers choose girls, compare stats, and build their own table team.</td>
+                <td>Drives nomination, collection, and girls' KPI conversation.</td>
+              </tr>
+              <tr>
+                <td>Drink Support Cards</td>
+                <td>4</td>
+                <td>Useful when customer wants advantage: champagne and cast drinks become part of the game.</td>
+                <td>Triggers bottle, cast drink, and set orders.</td>
+              </tr>
+              <tr>
+                <td>Venue / Area Cards</td>
+                <td>2</td>
+                <td>Links the game to real LUXE spaces, such as VIP Room or Champagne Tower.</td>
+                <td>Creates reason to upgrade seat or move to VIP.</td>
+              </tr>
+              <tr>
+                <td>Action / Mission Cards</td>
+                <td>3</td>
+                <td>Keeps the round social, funny, and repeatable without requiring deep game knowledge.</td>
+                <td>Creates interaction, return visit, and controlled redemption.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
