@@ -581,6 +581,55 @@
         linear-gradient(90deg, transparent 31%, rgba(212, 175, 55, .46) 32%, transparent 34%),
         linear-gradient(180deg, rgba(212, 175, 55, .72), rgba(140, 110, 32, .42));
     }
+    .face-art {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      flex: 1;
+      min-height: 168px;
+      margin: 12px 0;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, .32);
+      background: #0b0a09;
+    }
+    .face-art img {
+      width: 100%;
+      height: 100%;
+      min-height: 168px;
+      object-fit: cover;
+      opacity: .92;
+      filter: saturate(1.08) contrast(1.08);
+    }
+    .face-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, .6)),
+        radial-gradient(circle at 75% 12%, rgba(212, 175, 55, .22), transparent 36%);
+      pointer-events: none;
+    }
+    .family-face.full-art {
+      padding: 0;
+      border-color: rgba(255, 245, 202, .72);
+      background: #050505;
+    }
+    .family-face.full-art img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .family-face.full-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 58%, rgba(0, 0, 0, .5));
+      z-index: 1;
+      pointer-events: none;
+    }
     .face-white {
       border-color: rgba(245, 240, 232, .82);
       background: linear-gradient(180deg, #e6ded1, #bfb3a4);
@@ -633,6 +682,31 @@
       font-size: 10px;
       letter-spacing: .12em;
       text-transform: uppercase;
+    }
+    .box-odds {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: end;
+      margin: 0 0 14px;
+      padding: 12px;
+      border: 1px solid rgba(212, 175, 55, .26);
+      background: rgba(212, 175, 55, .08);
+    }
+    .box-odds span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .box-odds b {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1;
+      white-space: nowrap;
     }
 
     .distribution {
@@ -1449,9 +1523,11 @@
               <div class="face-top"><span>White Girl</span><span>No NFC</span></div>
               <div class="face-bottom"><span>Sakura<br><b>White</b></span><span>Base profile</span></div>
             </div>
+            <div class="box-odds"><span>Inside one 100-card box</span><b>~56 cards</b></div>
             <h3>White Girl Cards</h3>
             <p>Common girl profile cards that give the pack volume, collection habit, and trading behavior without creating redemption cost.</p>
             <div class="family-meta">
+              <div><strong>Box rarity</strong><span>Common base layer: around 56 White Girl cards per box, plus other White venue/mission cards.</span></div>
               <div><strong>Customer role</strong><span>Easy collecting, swapping, and conversation starter with casts.</span></div>
               <div><strong>Business role</strong><span>Low-cost content that makes each pack feel full.</span></div>
               <div><strong>Control</strong><span>No NFC, no redemption, no direct cost liability.</span></div>
@@ -1463,9 +1539,11 @@
               <div class="face-top"><span>Bling Girl</span><span>NFC · 001/003</span></div>
               <div class="face-bottom"><span>Mashiro<br><b>Bling</b></span><span>KPI chase</span></div>
             </div>
+            <div class="box-odds"><span>Inside one 100-card box</span><b>~1 in 5 boxes</b></div>
             <h3>Bling Girl Cards</h3>
             <p>Ultra-limited NFC girl cards. Each girl can have only three Bling copies in Season 1, controlling how many full-set winners can exist.</p>
             <div class="family-meta">
+              <div><strong>Box rarity</strong><span>60 total across 300 boxes: about 0.2 Bling cards per box, or 1 hit in every 5 boxes.</span></div>
               <div><strong>Customer role</strong><span>Rare chase card, trading object, and status signal.</span></div>
               <div><strong>Business role</strong><span>Drives box opening, repeat purchase, and cast-led selling.</span></div>
               <div><strong>Control</strong><span>NFC owner tracking, transfer history, and collection verification.</span></div>
@@ -1474,12 +1552,15 @@
           <article class="family-panel">
             <div class="family-face">
               <div class="face-top"><span>Gold Discount</span><span>NFC</span></div>
+              <div class="face-art"><img src="assets/luxe-full-box-set.png" alt="Champagne discount card product shot"></div>
               <div class="face-center"><b>Champagne 20</b><span>20% off selected bottle</span></div>
               <div class="face-bottom"><span>Valid this season<br><b>Gold</b></span><i class="face-chip"></i></div>
             </div>
+            <div class="box-odds"><span>Inside one 100-card box</span><b>~12.3 cards</b></div>
             <h3>Discount / Gift Cards</h3>
             <p>Reward cards that stimulate champagne, vodka set, VIP assist, birthday package, guest return, or small gift redemption.</p>
             <div class="family-meta">
+              <div><strong>Box rarity</strong><span>Approx. 9.8 discount/wine trigger cards + 2.5 gift cards per box.</span></div>
               <div><strong>Customer role</strong><span>Immediate perceived value and reason to order more tonight or return later.</span></div>
               <div><strong>Business role</strong><span>Turns card pulls into wine/table spending triggers.</span></div>
               <div><strong>Control</strong><span>Minimum spend, expiry, no stacking, staff redemption only.</span></div>
@@ -1488,12 +1569,15 @@
           <article class="family-panel">
             <div class="family-face">
               <div class="face-top"><span>Champagne Action</span><span>NFC</span></div>
+              <div class="face-art"><img src="assets/generated-casts/riri-regenerated-v2.jpg" alt="Action card girl face sample"></div>
               <div class="face-center"><b>Toast Moment</b><span>Invite a cast for one toast</span></div>
               <div class="face-bottom"><span>Consent required<br><b>Action</b></span><i class="face-chip"></i></div>
             </div>
+            <div class="box-odds"><span>Inside one 100-card box</span><b>~8.8 cards</b></div>
             <h3>Action Cards</h3>
             <p>Experience cards that create table interaction: toast, song choice, dice game, photo moment, signature, champagne call, or premium pose.</p>
             <div class="family-meta">
+              <div><strong>Box rarity</strong><span>Approx. 8.8 action cards per box; premium actions are rarer than basic toast/game moments.</span></div>
               <div><strong>Customer role</strong><span>Feels playful and personal, not just a financial discount.</span></div>
               <div><strong>Business role</strong><span>Attaches naturally to cast drinks, nominations, and champagne moments.</span></div>
               <div><strong>Control</strong><span>Cast consent, staff approval, substitute reward if declined.</span></div>
@@ -1502,26 +1586,31 @@
           <article class="family-panel">
             <div class="family-face">
               <div class="face-top"><span>Venue Mission</span><span>Stamp</span></div>
+              <div class="face-art"><img src="assets/luxe-cards-hero.png" alt="Mission card venue product shot"></div>
               <div class="face-center"><b>Return Night</b><span>Bring any card back next visit</span></div>
               <div class="face-bottom"><span>Collect · Visit · Unlock<br><b>Mission</b></span><i class="face-chip"></i></div>
             </div>
+            <div class="box-odds"><span>Inside one 100-card box</span><b>~22.7 cards</b></div>
             <h3>Mission / Venue Cards</h3>
             <p>Progress cards that turn the product into a small game: collect girls, complete visits, unlock stamps, or pair cards for a reward.</p>
             <div class="family-meta">
+              <div><strong>Box rarity</strong><span>Approx. 14.7 mission cards + 8.0 venue cards per box, mostly low-cost return mechanics.</span></div>
               <div><strong>Customer role</strong><span>Creates goals beyond tonight and encourages swapping with other customers.</span></div>
               <div><strong>Business role</strong><span>Pushes return visits, longer engagement, and future table spend.</span></div>
               <div><strong>Control</strong><span>Reward only unlocks after verified visit, spend, or collection condition.</span></div>
             </div>
           </article>
           <article class="family-panel">
-            <div class="family-face face-diamond">
+            <div class="family-face face-diamond full-art">
+              <img src="assets/luxe-black-diamond-premium-card.png" alt="Ultra premium Black Diamond card face">
               <div class="face-top"><span>Black Diamond</span><span>NFC · VIP</span></div>
-              <div class="face-center"><b>Season Winner</b><span>Management approval only</span></div>
               <div class="face-bottom"><span>Event reward<br><b>1 of 30</b></span><i class="face-chip"></i></div>
             </div>
+            <div class="box-odds"><span>Inside one 100-card box</span><b>~10% boxes</b></div>
             <h3>Black Diamond Cards</h3>
             <p>The rarest tier for VIP moments, season winner claims, ultra-limited celebration rewards, and headline partner storytelling.</p>
             <div class="family-meta">
+              <div><strong>Box rarity</strong><span>90 total print qty, but only 30 should be random box hits; the rest stay management/VIP controlled.</span></div>
               <div><strong>Customer role</strong><span>High-status pull that creates attention and social proof.</span></div>
               <div><strong>Business role</strong><span>Builds collector hype and gives management a controlled premium reward layer.</span></div>
               <div><strong>Control</strong><span>Very low print qty, serial number, NFC validation, management approval.</span></div>
