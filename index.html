@@ -4,715 +4,624 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LUXE Cards Concept Deck</title>
+  <meta name="description" content="Private LUXE nightlife trading card concept deck.">
   <style>
     :root {
-      --ink: #161616;
-      --muted: #65625d;
-      --line: #ded7cc;
-      --paper: #faf7f1;
-      --panel: #ffffff;
-      --night: #11131a;
-      --night-2: #1b1d25;
-      --gold: #b9924a;
-      --gold-2: #e3c16e;
-      --rose: #c56b7d;
-      --teal: #347f79;
-      --violet: #765c9a;
-      --blue: #426a9f;
-      --green: #527b48;
-      --danger: #9b3f45;
-      --shadow: 0 16px 48px rgba(22, 22, 22, .12);
-      --radius: 8px;
+      --bg: #080808;
+      --bg-2: #10100f;
+      --panel: #141311;
+      --panel-2: #1a1713;
+      --ink: #f5f0e8;
+      --muted: #9a9282;
+      --dim: #5d574c;
+      --gold: #d4af37;
+      --gold-2: #b8962f;
+      --gold-soft: rgba(212, 175, 55, .18);
+      --line: rgba(212, 175, 55, .18);
+      --danger: #c75f68;
+      --radius: 0;
+      --shadow: 0 28px 90px rgba(0, 0, 0, .55);
+      --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * { box-sizing: border-box; }
-
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       color: var(--ink);
-      background: var(--paper);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.45;
+      background: var(--bg);
+      font-family: var(--sans);
+      line-height: 1.55;
+      overflow-x: hidden;
     }
-
     body.auth-locked {
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(17, 19, 26, .94), rgba(17, 19, 26, .82)),
-        radial-gradient(circle at 72% 18%, rgba(227, 193, 110, .25), transparent 34%),
-        linear-gradient(135deg, #171923, #2a2230 48%, #1a2628);
+        linear-gradient(90deg, rgba(8, 8, 8, .96), rgba(8, 8, 8, .84)),
+        radial-gradient(circle at 68% 18%, rgba(212, 175, 55, .22), transparent 32%),
+        #080808;
     }
-
-    body.auth-locked > :not(.auth-gate) {
-      display: none !important;
-    }
+    body.auth-locked > :not(.auth-gate) { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
     .auth-gate {
       min-height: 100vh;
       display: grid;
       place-items: center;
       padding: 24px;
-      color: #fffaf0;
+      color: var(--ink);
     }
-
     .auth-panel {
       width: min(420px, 100%);
-      padding: 28px;
-      background: rgba(255, 250, 240, .96);
-      color: var(--ink);
-      border: 1px solid rgba(227, 193, 110, .45);
-      border-radius: var(--radius);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .32);
+      padding: 30px;
+      background: rgba(12, 12, 12, .94);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
     }
-
+    .auth-mark {
+      font-family: var(--serif);
+      color: var(--gold);
+      font-size: 34px;
+      letter-spacing: .12em;
+      margin-bottom: 12px;
+    }
     .auth-panel h1 {
-      margin: 10px 0 8px;
-      font-size: 26px;
-      line-height: 1.05;
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 34px;
+      letter-spacing: .04em;
     }
-
     .auth-panel p {
-      margin: 0 0 20px;
+      margin: 8px 0 22px;
       color: var(--muted);
       font-size: 14px;
     }
-
-    .auth-mark {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(185, 146, 74, .65);
-      border-radius: 50%;
-      color: var(--gold);
-      font-weight: 900;
-      background: #fff;
-    }
-
-    .auth-form {
-      display: grid;
-      gap: 12px;
-    }
-
+    .auth-form { display: grid; gap: 12px; }
     .auth-form label {
       display: grid;
-      gap: 6px;
+      gap: 7px;
       color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      letter-spacing: .08em;
     }
-
     .auth-form input {
-      width: 100%;
       min-height: 46px;
       padding: 0 12px;
+      background: #0e0e0e;
       color: var(--ink);
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      border: 1px solid rgba(212, 175, 55, .25);
       font: inherit;
     }
-
     .auth-form input:focus {
-      outline: 2px solid rgba(185, 146, 74, .28);
+      outline: 1px solid var(--gold);
       border-color: var(--gold);
     }
-
     .auth-error {
       min-height: 18px;
       color: var(--danger);
       font-size: 13px;
       font-weight: 700;
     }
-
     .auth-submit {
       min-height: 46px;
-      border: 0;
-      border-radius: 6px;
+      border: 1px solid var(--gold);
       background: linear-gradient(135deg, var(--gold), var(--gold-2));
-      color: #17130a;
+      color: #090806;
       font: inherit;
-      font-weight: 900;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
       cursor: pointer;
-    }
-
-    a { color: inherit; }
-
-    .shell {
-      min-height: 100vh;
-      background:
-        linear-gradient(90deg, rgba(17, 19, 26, .92), rgba(17, 19, 26, .78)),
-        radial-gradient(circle at 70% 20%, rgba(227, 193, 110, .24), transparent 34%),
-        linear-gradient(135deg, #171923, #2a2230 48%, #1a2628);
-      color: #fffaf0;
     }
 
     .nav {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      min-height: 64px;
-      padding: 0 32px;
-      background: rgba(17, 19, 26, .88);
-      border-bottom: 1px solid rgba(227, 193, 110, .28);
-      backdrop-filter: blur(12px);
+      gap: 24px;
+      padding: 0 36px;
+      background: rgba(8, 8, 8, .86);
+      border-bottom: 1px solid rgba(212, 175, 55, .1);
+      backdrop-filter: blur(14px);
     }
-
     .brand {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0;
+      align-items: baseline;
+      gap: 14px;
+      white-space: nowrap;
     }
-
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(227, 193, 110, .72);
-      color: var(--gold-2);
-      font-size: 18px;
-      font-weight: 900;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, .04);
+    .brand strong {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: .14em;
     }
-
+    .brand span {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 4px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 22px;
+      color: var(--ink);
+      font-size: 11px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
     }
-
-    .nav-links a {
-      text-decoration: none;
-      color: rgba(255, 250, 240, .82);
-      padding: 8px 10px;
-      border-radius: 6px;
-      font-size: 13px;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      background: rgba(255, 255, 255, .08);
-      outline: none;
-    }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover { color: var(--gold); }
 
     .hero {
+      min-height: calc(100vh - 72px);
       display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(320px, .78fr);
-      gap: 42px;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 74px 32px 54px;
-      align-items: center;
+      grid-template-columns: minmax(320px, .78fr) minmax(420px, 1.22fr);
+      align-items: stretch;
+      background: #080808;
     }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 10px;
-      border: 1px solid rgba(227, 193, 110, .42);
-      border-radius: 6px;
-      color: #f2d991;
-      font-size: 13px;
-      background: rgba(255, 255, 255, .06);
-    }
-
-    h1 {
-      margin: 18px 0 18px;
-      font-size: 58px;
-      line-height: 1.02;
-      letter-spacing: 0;
-      max-width: 820px;
-    }
-
-    .hero p {
-      max-width: 760px;
-      color: rgba(255, 250, 240, .82);
-      font-size: 19px;
-      margin: 0 0 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 42px;
-      padding: 0 15px;
-      border: 1px solid rgba(255, 255, 255, .22);
-      border-radius: 6px;
-      color: #fffaf0;
-      text-decoration: none;
-      background: rgba(255, 255, 255, .08);
-      font-weight: 700;
-    }
-
-    .btn.primary {
-      background: var(--gold-2);
-      color: #19140b;
-      border-color: var(--gold-2);
-    }
-
-    .deck-stack {
+    .hero-copy {
       position: relative;
-      min-height: 500px;
-      display: grid;
-      place-items: center;
-    }
-
-    .card-mock {
-      width: min(310px, 78vw);
-      aspect-ratio: 2.5 / 3.5;
-      border-radius: 8px;
-      padding: 16px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,0) 30%),
-        linear-gradient(160deg, #181a22 0%, #1f2430 50%, #392337 100%);
-      border: 1px solid rgba(227, 193, 110, .62);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, .44);
-      position: absolute;
-      transform: rotate(-5deg) translateX(-26px);
-      overflow: hidden;
-    }
-
-    .card-mock.alt {
-      transform: rotate(7deg) translate(44px, 36px);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,0) 30%),
-        linear-gradient(160deg, #281b28 0%, #322840 52%, #765c2f 100%);
-      opacity: .88;
-    }
-
-    .card-mock.front {
-      transform: rotate(0) translate(-4px, -20px);
-      z-index: 3;
-    }
-
-    .card-top {
+      z-index: 2;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #f4d37e;
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .portrait {
-      margin: 18px 0 14px;
-      height: 52%;
-      border-radius: 6px;
+      flex-direction: column;
+      justify-content: center;
+      padding: 86px 52px 86px 64px;
+      border-right: 1px solid rgba(212, 175, 55, .1);
       background:
-        linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,0)),
-        linear-gradient(135deg, rgba(197, 107, 125, .76), rgba(52, 127, 121, .70)),
-        linear-gradient(90deg, #302434, #59425a);
-      border: 1px solid rgba(255, 255, 255, .18);
-      display: grid;
-      place-items: center;
-      color: rgba(255, 250, 240, .74);
-      font-weight: 800;
-      text-align: center;
-      padding: 20px;
+        linear-gradient(90deg, rgba(8, 8, 8, 1), rgba(8, 8, 8, .92)),
+        radial-gradient(circle at 8% 14%, rgba(212, 175, 55, .14), transparent 26%);
     }
-
-    .card-name {
-      font-size: 26px;
-      line-height: 1.05;
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
       margin: 0;
-      font-weight: 900;
+      font-family: var(--serif);
+      font-size: clamp(48px, 6vw, 86px);
+      line-height: .96;
+      font-weight: 400;
+      letter-spacing: 0;
     }
-
-    .stats {
+    .hero h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .hero-copy p {
+      max-width: 610px;
+      margin: 24px 0 0;
+      color: #d7d0c3;
+      font-size: 16px;
+    }
+    .hero-metrics {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 14px;
+      gap: 1px;
+      margin-top: 34px;
+      background: rgba(212, 175, 55, .16);
+      border: 1px solid rgba(212, 175, 55, .16);
     }
-
-    .stat {
-      border: 1px solid rgba(255, 255, 255, .15);
-      border-radius: 6px;
-      padding: 8px;
-      background: rgba(255, 255, 255, .06);
+    .hero-metric {
+      padding: 18px 16px;
+      background: rgba(20, 19, 17, .92);
     }
-
-    .stat strong {
+    .hero-metric strong {
       display: block;
-      font-size: 17px;
-      color: #f8df97;
+      font-family: var(--serif);
+      color: var(--gold);
+      font-size: 31px;
+      line-height: 1;
+      font-weight: 400;
+    }
+    .hero-metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .hero-art {
+      position: relative;
+      min-height: 720px;
+      overflow: hidden;
+      background: #0b0b0b;
+    }
+    .hero-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: right center;
+      filter: saturate(.95) contrast(1.02);
+    }
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(8, 8, 8, .22), transparent 28%);
+      pointer-events: none;
     }
 
-    .stat span {
-      color: rgba(255, 250, 240, .66);
-      font-size: 11px;
-    }
-
-    main {
-      background: var(--paper);
-    }
-
+    main { background: var(--bg); }
     section {
-      max-width: 1180px;
+      padding: 92px 36px;
+      border-top: 1px solid rgba(212, 175, 55, .1);
+    }
+    .wrap {
+      width: min(1200px, 100%);
       margin: 0 auto;
-      padding: 64px 32px;
     }
-
     .section-head {
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(260px, .75fr) minmax(300px, 1fr);
+      gap: 52px;
       align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 24px;
+      margin-bottom: 46px;
     }
-
-    .section-head h2 {
+    .kicker {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h2 {
       margin: 0;
-      font-size: 34px;
-      line-height: 1.1;
+      font-family: var(--serif);
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.05;
+      font-weight: 400;
       letter-spacing: 0;
     }
-
     .section-head p {
       margin: 0;
       color: var(--muted);
-      max-width: 540px;
+      font-size: 15px;
+      max-width: 620px;
     }
 
-    .grid {
+    .product-grid {
       display: grid;
-      gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(212, 175, 55, .16);
+      border: 1px solid rgba(212, 175, 55, .16);
     }
-
-    .grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-    .metric,
-    .panel,
-    .sample-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 8px 24px rgba(22, 22, 22, .05);
+    .product-card {
+      min-height: 174px;
+      padding: 24px;
+      background: linear-gradient(180deg, #151411, #0f0e0d);
     }
-
-    .metric {
-      padding: 18px;
-      min-height: 124px;
-    }
-
-    .metric .label {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    .metric .value {
+    .product-card b {
+      display: block;
+      color: var(--gold);
+      font-family: var(--serif);
       font-size: 34px;
+      font-weight: 400;
       line-height: 1;
-      font-weight: 900;
-      letter-spacing: 0;
-      color: var(--night);
+      margin-bottom: 14px;
     }
-
-    .metric .note {
+    .product-card strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--ink);
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .product-card span {
       color: var(--muted);
-      margin-top: 10px;
       font-size: 13px;
     }
 
-    .panel {
-      padding: 22px;
-    }
-
-    .panel.dark {
-      background: var(--night);
-      color: #fffaf0;
-      border-color: rgba(227, 193, 110, .24);
-    }
-
-    .panel h3 {
-      margin: 0 0 12px;
-      font-size: 20px;
-      letter-spacing: 0;
-    }
-
-    .panel p {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .panel.dark p { color: rgba(255, 250, 240, .72); }
-
-    .list {
-      list-style: none;
-      padding: 0;
-      margin: 16px 0 0;
-    }
-
-    .list li {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 10px 0;
-      border-top: 1px solid rgba(222, 215, 204, .82);
-    }
-
-    .panel.dark .list li { border-color: rgba(255, 255, 255, .14); }
-    .list strong { white-space: nowrap; }
-
-    .bar-list {
+    .showcase {
       display: grid;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .bar-row {
-      display: grid;
-      grid-template-columns: 130px 1fr 86px;
-      gap: 12px;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 34px;
       align-items: center;
+    }
+    .image-frame {
+      border: 1px solid rgba(212, 175, 55, .22);
+      background: #0d0d0d;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .image-frame img { width: 100%; }
+    .note-panel {
+      padding: 34px;
+      background: linear-gradient(180deg, #171511, #100f0d);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .note-panel h3 {
+      margin: 0 0 16px;
+      font-family: var(--serif);
+      font-size: 31px;
+      font-weight: 400;
+      color: var(--gold);
+    }
+    .note-panel p {
+      margin: 0 0 18px;
+      color: #d5cfc2;
+    }
+    .bullet-list {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .bullet-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 12px;
+      color: var(--muted);
       font-size: 14px;
     }
-
-    .bar-track {
-      height: 16px;
-      background: #ebe4d8;
-      border-radius: 999px;
-      overflow: hidden;
-      border: 1px solid #ddd3c3;
+    .bullet-list li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      margin-top: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
     }
 
+    .distribution {
+      display: grid;
+      grid-template-columns: minmax(320px, .9fr) minmax(360px, 1.1fr);
+      gap: 34px;
+      align-items: start;
+    }
+    .bars {
+      display: grid;
+      gap: 16px;
+      padding: 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 76px;
+      gap: 14px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
     .bar {
+      height: 12px;
+      background: rgba(255, 255, 255, .06);
+      overflow: hidden;
+    }
+    .bar span {
+      display: block;
       height: 100%;
-      width: var(--w);
-      background: var(--c);
+      background: linear-gradient(90deg, var(--gold-2), var(--gold));
+    }
+    .pool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(212, 175, 55, .16);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .pool-item {
+      padding: 24px;
+      min-height: 160px;
+      background: linear-gradient(180deg, #151411, #0f0e0d);
+    }
+    .pool-item strong {
+      display: block;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 400;
+    }
+    .pool-item span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .rarity-ladder {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
     }
-
-    .rarity {
-      padding: 14px;
-      border-radius: 8px;
-      min-height: 145px;
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, .18);
-      background: var(--bg);
+    .tier {
+      min-height: 230px;
+      padding: 22px;
+      background: linear-gradient(180deg, #161411, #0d0c0b);
+      border: 1px solid rgba(212, 175, 55, .16);
+      position: relative;
+      overflow: hidden;
     }
-
-    .rarity .tier {
-      font-weight: 900;
-      font-size: 17px;
-      margin-bottom: 8px;
+    .tier::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -60px auto;
+      width: 130px;
+      height: 130px;
+      border: 1px solid rgba(212, 175, 55, .12);
+      transform: rotate(45deg);
     }
-
-    .rarity .count {
-      font-size: 24px;
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
-
-    .rarity p {
-      margin: 0;
-      color: rgba(255, 255, 255, .78);
-      font-size: 13px;
-    }
-
-    .pack-visual {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 8px;
-      margin-top: 16px;
-    }
-
-    .mini-card {
-      aspect-ratio: 2.5 / 3.5;
-      border-radius: 5px;
-      border: 1px solid rgba(22,22,22,.16);
-      background: var(--bg);
-      display: grid;
-      place-items: center;
-      font-size: 12px;
+    .tier .level {
+      color: var(--gold);
+      font-size: 11px;
       font-weight: 800;
-      color: var(--color, #191919);
-      text-align: center;
-      padding: 4px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .tier h3 {
+      margin: 18px 0 14px;
+      font-family: var(--serif);
+      font-size: 27px;
+      font-weight: 400;
+    }
+    .tier p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .flow {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(212, 175, 55, .16);
+      border: 1px solid rgba(212, 175, 55, .16);
     }
-
     .flow-step {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 14px;
-      min-height: 150px;
-      position: relative;
+      padding: 28px;
+      background: linear-gradient(180deg, #151411, #0f0e0d);
+      min-height: 212px;
     }
-
-    .flow-step .num {
-      width: 30px;
-      height: 30px;
-      display: grid;
-      place-items: center;
-      border-radius: 6px;
-      background: var(--night);
-      color: #fff;
-      font-weight: 900;
+    .flow-step b {
+      display: block;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+    .flow-step strong {
+      display: block;
       margin-bottom: 12px;
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .flow-step span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    .flow-step h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
+    .sample-table {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-
-    .flow-step p {
+    .sample-card {
+      padding: 24px;
+      min-height: 220px;
+      background: linear-gradient(180deg, #171511, #100f0d);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .sample-card .tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border: 1px solid rgba(212, 175, 55, .32);
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .sample-card h3 {
+      margin: 0 0 14px;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+    }
+    .sample-card p {
       margin: 0;
       color: var(--muted);
       font-size: 13px;
     }
 
-    .sample-card {
-      overflow: hidden;
-    }
-
-    .sample-card .sample-head {
-      padding: 14px;
-      color: #fff;
-      background: var(--bg);
-    }
-
-    .sample-card .sample-head span {
-      display: inline-flex;
-      padding: 4px 7px;
-      border-radius: 5px;
-      background: rgba(255,255,255,.14);
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 36px;
-    }
-
-    .sample-card .sample-head h3 {
-      margin: 0;
-      font-size: 22px;
-      line-height: 1.05;
-    }
-
-    .sample-card .sample-body {
-      padding: 14px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .rules {
+    .guardrails {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(212, 175, 55, .16);
+      border: 1px solid rgba(212, 175, 55, .16);
     }
-
-    .rule {
-      display: flex;
-      gap: 12px;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 14px;
+    .guardrail {
+      padding: 24px;
+      min-height: 150px;
+      background: #11100e;
     }
-
-    .check {
-      flex: 0 0 28px;
-      height: 28px;
-      border-radius: 6px;
-      display: grid;
-      place-items: center;
-      background: rgba(52, 127, 121, .14);
-      color: var(--teal);
-      font-weight: 900;
-    }
-
-    .rule strong {
+    .guardrail strong {
       display: block;
-      margin-bottom: 4px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 12px;
     }
-
-    .rule span {
+    .guardrail span {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
     }
 
-    .footer {
-      background: var(--night);
-      color: rgba(255, 250, 240, .72);
-      padding: 34px 32px;
+    footer {
+      padding: 34px 36px;
+      color: var(--dim);
+      border-top: 1px solid rgba(212, 175, 55, .1);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
       text-align: center;
-      border-top: 1px solid rgba(227, 193, 110, .28);
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1050px) {
+      .nav { padding: 0 22px; }
+      .nav-links { display: none; }
       .hero { grid-template-columns: 1fr; }
-      .deck-stack { min-height: 420px; }
-      .grid.cols-4, .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr 1fr; }
-      .rarity-ladder { grid-template-columns: repeat(3, 1fr); }
-      .flow { grid-template-columns: repeat(3, 1fr); }
-      h1 { font-size: 44px; }
+      .hero-copy { padding: 64px 28px; border-right: 0; }
+      .hero-art { min-height: 58vw; }
+      .section-head, .showcase, .distribution { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .rarity-ladder { grid-template-columns: repeat(2, 1fr); }
+      .flow { grid-template-columns: repeat(2, 1fr); }
+      .sample-table, .guardrails { grid-template-columns: repeat(2, 1fr); }
     }
-
-    @media (max-width: 680px) {
-      .nav {
-        position: relative;
-        padding: 14px 18px;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav-links { justify-content: flex-start; }
-      .hero, section { padding-left: 18px; padding-right: 18px; }
-      .hero { padding-top: 42px; }
-      h1 { font-size: 36px; }
-      .hero p { font-size: 17px; }
-      .section-head { display: block; }
-      .section-head h2 { font-size: 28px; margin-bottom: 10px; }
-      .grid.cols-4, .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
-      .rarity-ladder { grid-template-columns: 1fr 1fr; }
-      .flow { grid-template-columns: 1fr; }
-      .rules { grid-template-columns: 1fr; }
-      .bar-row { grid-template-columns: 92px 1fr 70px; }
-      .pack-visual { grid-template-columns: repeat(5, 1fr); }
-      .card-mock { width: min(270px, 82vw); }
+    @media (max-width: 640px) {
+      .brand strong { font-size: 23px; }
+      .brand span { display: none; }
+      section { padding: 68px 18px; }
+      .hero-copy { padding: 52px 22px; }
+      .hero-metrics, .product-grid, .pool-grid, .rarity-ladder, .flow, .sample-table, .guardrails { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 108px 1fr 58px; gap: 10px; }
+      .auth-panel { padding: 24px; }
     }
   </style>
 </head>
 <body class="auth-locked">
   <div class="auth-gate" id="authGate">
     <section class="auth-panel" aria-labelledby="authTitle">
-      <div class="auth-mark">L</div>
-      <h1 id="authTitle">LUXE Cards</h1>
+      <div class="auth-mark">LUXE</div>
+      <h1 id="authTitle">Cards Concept</h1>
       <p>Private concept deck. Please sign in to continue.</p>
       <form class="auth-form" id="authForm">
         <label>
@@ -728,373 +637,240 @@
       </form>
     </section>
   </div>
-  <div class="shell" id="top">
-    <nav class="nav" aria-label="Main navigation">
-      <div class="brand">
-        <div class="brand-mark">L</div>
-        <div>LUXE Cards</div>
-      </div>
-      <div class="nav-links">
-        <a href="#economy">Economy</a>
-        <a href="#distribution">Distribution</a>
-        <a href="#rarity">Rarity</a>
-        <a href="#nfc">NFC</a>
-        <a href="#kpi">KPI</a>
-        <a href="#samples">Cards</a>
-      </div>
-    </nav>
 
-    <header class="hero">
-      <div>
-        <div class="eyebrow">Season 1 Operating Concept · 80% Complete</div>
-        <h1>A nightlife trading card system for LUXE.</h1>
-        <p>
-          A sealed-pack card economy that gives customers a new reason to spend, girls a new KPI product to sell, and LUXE a repeatable collection game built around champagne, rewards, NFC cards, and ultra-rare Bling Girls Cards.
-        </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#distribution">View 30,000 Card Distribution</a>
-          <a class="btn" href="#samples">See Sample Cards</a>
-        </div>
-      </div>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#top" aria-label="LUXE Cards home">
+      <strong>LUXE</strong>
+      <span>Nightlife Trading Cards</span>
+    </a>
+    <div class="nav-links">
+      <a href="#product">Product</a>
+      <a href="#cards">Cards</a>
+      <a href="#distribution">Distribution</a>
+      <a href="#nfc">NFC</a>
+      <a href="#kpi">KPI</a>
+      <a href="#guardrails">Rules</a>
+    </div>
+  </nav>
 
-      <div class="deck-stack" aria-label="LUXE card mockups">
-        <div class="card-mock alt"></div>
-        <div class="card-mock"></div>
-        <div class="card-mock front">
-          <div class="card-top"><span>BLACK DIAMOND</span><span>NFC</span></div>
-          <div class="portrait">REAL PHOTO<br>STYLIZED FINISH</div>
-          <h2 class="card-name">Bling Girl<br>Night Edition</h2>
-          <div class="stats">
-            <div class="stat"><strong>95</strong><span>Charm</span></div>
-            <div class="stat"><strong>88</strong><span>Party</span></div>
-            <div class="stat"><strong>03</strong><span>Copies</span></div>
-          </div>
-        </div>
+  <header class="hero" id="top">
+    <div class="hero-copy">
+      <div class="eyebrow">Season 1 · Private Concept</div>
+      <h1>LUXE <em>Cards</em></h1>
+      <p>
+        A premium sealed-pack trading card product for LUXE Shinjuku: collectible girl cards, NFC rewards,
+        champagne-driven utility cards, and a staff KPI game that turns table spending into a repeatable nightlife ritual.
+      </p>
+      <div class="hero-metrics" aria-label="Launch metrics">
+        <div class="hero-metric"><strong>300</strong><span>Season 1 boxes</span></div>
+        <div class="hero-metric"><strong>30K</strong><span>Total cards</span></div>
+        <div class="hero-metric"><strong>100</strong><span>Card designs</span></div>
       </div>
-    </header>
-  </div>
+    </div>
+    <div class="hero-art">
+      <img src="assets/luxe-cards-hero.png" alt="Generated LUXE trading card box, pack, and card mockups">
+    </div>
+  </header>
 
   <main>
-    <section id="economy">
-      <div class="section-head">
-        <h2>Commercial Structure</h2>
-        <p>Simple enough for customers to understand at the table, but deep enough to support collection, trading, rewards, and girl KPI.</p>
-      </div>
-
-      <div class="grid cols-4">
-        <div class="metric">
-          <div class="label">Box Price</div>
-          <div class="value">¥10K</div>
-          <div class="note">Main product SKU</div>
-        </div>
-        <div class="metric">
-          <div class="label">Packs Per Box</div>
-          <div class="value">10</div>
-          <div class="note">Each pack has 10 cards</div>
-        </div>
-        <div class="metric">
-          <div class="label">Season 1 Boxes</div>
-          <div class="value">300</div>
-          <div class="note">First launch run</div>
-        </div>
-        <div class="metric">
-          <div class="label">Total Cards</div>
-          <div class="value">30K</div>
-          <div class="note">Full physical supply</div>
-        </div>
-      </div>
-
-      <div class="grid cols-2" style="margin-top:16px">
-        <div class="panel">
-          <h3>Pack Anatomy</h3>
-          <p>Every pack creates both volume and excitement: seven white cards for collection density, plus three special cards for NFC, rewards, action, rarity, and chase value.</p>
-          <div class="pack-visual">
-            <div class="mini-card" style="--bg:#f9f5ec">White</div>
-            <div class="mini-card" style="--bg:#f9f5ec">White</div>
-            <div class="mini-card" style="--bg:#f9f5ec">White</div>
-            <div class="mini-card" style="--bg:#f9f5ec">White</div>
-            <div class="mini-card" style="--bg:#f9f5ec">White</div>
-            <div class="mini-card" style="--bg:#f9f5ec">White</div>
-            <div class="mini-card" style="--bg:#f9f5ec">White</div>
-            <div class="mini-card" style="--bg:#bfc3c8">Special</div>
-            <div class="mini-card" style="--bg:#e3c16e">Special</div>
-            <div class="mini-card" style="--bg:#11131a;--color:#fff">Special</div>
+    <section id="product">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Commercial structure</div>
+            <h2>Easy to sell at the table.</h2>
           </div>
+          <p>
+            The product keeps the customer offer simple while hiding enough depth underneath for collecting,
+            swapping, staff selling, repeat visits, and rare-card hype.
+          </p>
         </div>
+        <div class="product-grid">
+          <div class="product-card"><b>¥1,500</b><strong>Single pack</strong><span>Impulse buy for first-time customers or casual add-on during a table session.</span></div>
+          <div class="product-card"><b>¥10,000</b><strong>Full box</strong><span>Ten packs, one hundred cards, stronger opening moment, and at least one Gold card guaranteed.</span></div>
+          <div class="product-card"><b>10</b><strong>Cards per pack</strong><span>Seven White cards plus three Special cards, including at least one redeemable card.</span></div>
+          <div class="product-card"><b>3</b><strong>Special cards</strong><span>Discount, action, mission, Bling Girl, Champagne, or Black Diamond cards with NFC tracking.</span></div>
+        </div>
+      </div>
+    </section>
 
-        <div class="panel dark">
-          <h3>Box Promise</h3>
-          <p>Each box has an explicit reason to buy over loose packs: a guaranteed Gold card, strong special-card density, and a visible chance at Champagne, Bling, or Black Diamond cards.</p>
-          <ul class="list">
-            <li><span>Total cards</span><strong>100</strong></li>
-            <li><span>White cards</span><strong>70</strong></li>
-            <li><span>Special cards</span><strong>30</strong></li>
-            <li><span>Guaranteed hit</span><strong>1 Gold+</strong></li>
-          </ul>
+    <section id="cards">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Generated design direction</div>
+            <h2>Closer to the official LUXE mood.</h2>
+          </div>
+          <p>
+            Based on the official site direction: black base, champagne-gold accents, serif luxury type,
+            cast-card photography, VIP atmosphere, and a clean Shinjuku premium nightlife tone.
+          </p>
+        </div>
+        <div class="showcase">
+          <div class="image-frame">
+            <img src="assets/luxe-card-lineup.png" alt="Generated LUXE card lineup showing White, Bling, Gold, Champagne, Mission, and Black Diamond cards">
+          </div>
+          <aside class="note-panel">
+            <h3>Card families</h3>
+            <p>
+              The design system should feel like a real collectible product, not a coupon sheet.
+              Girls Cards are the emotional chase; reward cards create immediate spend; mission cards create return visits.
+            </p>
+            <ul class="bullet-list">
+              <li>White Girl Cards: common, no NFC, volume and collectability.</li>
+              <li>Bling Girl Cards: ultra-limited NFC cards used for collection and KPI.</li>
+              <li>Gold / Champagne Cards: discounts, action cards, gifts, and venue upgrades.</li>
+              <li>Black Diamond Cards: VIP moments, season winners, or event-only rewards.</li>
+            </ul>
+          </aside>
         </div>
       </div>
     </section>
 
     <section id="distribution">
-      <div class="section-head">
-        <h2>30,000 Card Distribution</h2>
-        <p>The design pool is 100 card designs, but physical quantities are weighted to create scarcity, utility, and chase-card behavior.</p>
-      </div>
-
-      <div class="grid cols-2">
-        <div class="panel">
-          <h3>Physical Supply By Tier</h3>
-          <div class="bar-list">
-            <div class="bar-row">
-              <span>White/Base</span>
-              <div class="bar-track"><div class="bar" style="--w:70%;--c:#f1e8d8"></div></div>
-              <strong>21,000</strong>
-            </div>
-            <div class="bar-row">
-              <span>Silver</span>
-              <div class="bar-track"><div class="bar" style="--w:21%;--c:#aeb6c0"></div></div>
-              <strong>6,300</strong>
-            </div>
-            <div class="bar-row">
-              <span>Gold</span>
-              <div class="bar-track"><div class="bar" style="--w:6.5%;--c:#d3ab4b"></div></div>
-              <strong>1,950</strong>
-            </div>
-            <div class="bar-row">
-              <span>Champagne</span>
-              <div class="bar-track"><div class="bar" style="--w:2%;--c:#c56b7d"></div></div>
-              <strong>600</strong>
-            </div>
-            <div class="bar-row">
-              <span>Bling Girls</span>
-              <div class="bar-track"><div class="bar" style="--w:.2%;--c:#765c9a"></div></div>
-              <strong>60</strong>
-            </div>
-            <div class="bar-row">
-              <span>Black Diamond</span>
-              <div class="bar-track"><div class="bar" style="--w:.1%;--c:#11131a"></div></div>
-              <strong>30</strong>
-            </div>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">30,000 card economy</div>
+            <h2>Controlled scarcity.</h2>
           </div>
+          <p>
+            Season 1 is designed around 300 boxes and 30,000 printed cards. White cards create volume.
+            Special cards create spending utility. Bling Girls Cards create the chase.
+          </p>
         </div>
-
-        <div class="panel">
-          <h3>100-Design Season Pool</h3>
-          <ul class="list">
-            <li><span>Girls Card designs</span><strong>60</strong></li>
-            <li><span>Discount/Gift designs</span><strong>15</strong></li>
-            <li><span>Action designs</span><strong>10</strong></li>
-            <li><span>Mission/Venue/Combo designs</span><strong>15</strong></li>
-          </ul>
-          <p style="margin-top:16px">Assuming 20 girls: each girl receives two White Girls Cards and one NFC-enabled Bling Girls Card.</p>
+        <div class="distribution">
+          <div class="bars">
+            <div class="bar-row"><span>White</span><div class="bar"><span style="width:70%"></span></div><b>21,000</b></div>
+            <div class="bar-row"><span>Silver</span><div class="bar"><span style="width:21%"></span></div><b>6,300</b></div>
+            <div class="bar-row"><span>Gold</span><div class="bar"><span style="width:6.5%"></span></div><b>1,950</b></div>
+            <div class="bar-row"><span>Champagne</span><div class="bar"><span style="width:2%"></span></div><b>600</b></div>
+            <div class="bar-row"><span>Bling Girls</span><div class="bar"><span style="width:.2%"></span></div><b>60</b></div>
+            <div class="bar-row"><span>Black Diamond</span><div class="bar"><span style="width:.1%"></span></div><b>30</b></div>
+          </div>
+          <div class="pool-grid">
+            <div class="pool-item"><strong>60</strong><span>Girls Card designs: 20 girls x 3 designs each, with two White cards and one Bling card per girl.</span></div>
+            <div class="pool-item"><strong>15</strong><span>Discount / Gift designs: champagne discounts, free set offers, entry benefits, and next-visit hooks.</span></div>
+            <div class="pool-item"><strong>10</strong><span>Action Card designs: flirty table interactions controlled by consent and staff approval.</span></div>
+            <div class="pool-item"><strong>15</strong><span>Mission / Venue / Combo designs: return visits, set collection, and VIP progression.</span></div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="rarity">
-      <div class="section-head">
-        <h2>Nightlife Rarity Ladder</h2>
-        <p>The rarity system uses venue-native language instead of generic trading-card language.</p>
-      </div>
-
-      <div class="rarity-ladder">
-        <div class="rarity" style="--bg:#d7d0c3;color:#1b1b1b">
-          <div class="tier">White</div>
-          <div class="count">21,000</div>
-          <p>No NFC. Base collection and volume.</p>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Rarity ladder</div>
+            <h2>Nightlife language, not game jargon.</h2>
+          </div>
+          <p>
+            The tiers use terms that feel natural inside LUXE: White, Silver, Gold, Champagne, and Black Diamond.
+          </p>
         </div>
-        <div class="rarity" style="--bg:#7f8792">
-          <div class="tier">Silver</div>
-          <div class="count">6,300</div>
-          <p>NFC utility and low-cost rewards.</p>
-        </div>
-        <div class="rarity" style="--bg:#a77b24">
-          <div class="tier">Gold</div>
-          <div class="count">1,950</div>
-          <p>Box-guaranteed special tier.</p>
-        </div>
-        <div class="rarity" style="--bg:#9b5968">
-          <div class="tier">Champagne</div>
-          <div class="count">600</div>
-          <p>Premium offers and high-impact rewards.</p>
-        </div>
-        <div class="rarity" style="--bg:#5a447d">
-          <div class="tier">Bling Girls</div>
-          <div class="count">60</div>
-          <p>Three copies per girl. Collection chase.</p>
-        </div>
-        <div class="rarity" style="--bg:#11131a">
-          <div class="tier">Black Diamond</div>
-          <div class="count">30</div>
-          <p>Ultra rare VIP or event-level cards.</p>
+        <div class="rarity-ladder">
+          <article class="tier"><div class="level">Base</div><h3>White</h3><p>Common no-NFC cards. Mostly Girl Cards and venue flavor cards.</p></article>
+          <article class="tier"><div class="level">Special</div><h3>Silver</h3><p>Low-cost rewards, light utility, simple missions, and entry-level benefits.</p></article>
+          <article class="tier"><div class="level">Box hit</div><h3>Gold</h3><p>Every box gets at least one. Stronger discounts, Bling Girl cards, and core rewards.</p></article>
+          <article class="tier"><div class="level">Premium</div><h3>Champagne</h3><p>Higher-impact rewards such as champagne offers, table upgrades, and premium action cards.</p></article>
+          <article class="tier"><div class="level">Ultra rare</div><h3>Black Diamond</h3><p>Season headline cards for VIP moments, limited ceremonies, or winner-level rewards.</p></article>
         </div>
       </div>
     </section>
 
     <section id="nfc">
-      <div class="section-head">
-        <h2>NFC Card Lifecycle</h2>
-        <p>All special cards become trackable assets. NFC makes the game controllable: verification, redemption, transfer, fraud prevention, and KPI tracking.</p>
-      </div>
-
-      <div class="flow">
-        <div class="flow-step">
-          <div class="num">1</div>
-          <h3>Unclaimed</h3>
-          <p>Card pulled from pack but not registered.</p>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">NFC ownership layer</div>
+            <h2>Special cards become trackable assets.</h2>
+          </div>
+          <p>
+            White cards stay simple. Every Special card gets NFC so LUXE can verify cards,
+            register owners, handle transfers, redeem benefits, and track KPI progress.
+          </p>
         </div>
-        <div class="flow-step">
-          <div class="num">2</div>
-          <h3>Claimed</h3>
-          <p>Customer or girl registers ownership.</p>
-        </div>
-        <div class="flow-step">
-          <div class="num">3</div>
-          <h3>Transferred</h3>
-          <p>Gifted, traded, or moved to a girl's KPI account.</p>
-        </div>
-        <div class="flow-step">
-          <div class="num">4</div>
-          <h3>Redeemed</h3>
-          <p>Discount, gift, action, or mission benefit used by staff.</p>
-        </div>
-        <div class="flow-step">
-          <div class="num">5</div>
-          <h3>Collection Counted</h3>
-          <p>Bling Girls Card contributes to KPI or full set progress.</p>
-        </div>
-        <div class="flow-step">
-          <div class="num">6</div>
-          <h3>Archived</h3>
-          <p>Expired or redeemed cards remain collectible but inactive.</p>
+        <div class="flow">
+          <div class="flow-step"><b>01</b><strong>Tap to verify</strong><span>Show season, serial, rarity, card type, and authenticity.</span></div>
+          <div class="flow-step"><b>02</b><strong>Claim owner</strong><span>Customer or girl registers card ownership in the LUXE card backend.</span></div>
+          <div class="flow-step"><b>03</b><strong>Transfer</strong><span>Customer gives a card to a girl, girls exchange cards, or collectors trade cards.</span></div>
+          <div class="flow-step"><b>04</b><strong>Redeem / KPI</strong><span>Staff redeems utility cards. Bling Girls Cards update collection progress.</span></div>
         </div>
       </div>
     </section>
 
     <section id="kpi">
-      <div class="section-head">
-        <h2>Girls KPI And Collection Game</h2>
-        <p>The strongest loop is not only selling cards; it is getting customers and girls to trade toward scarce Bling collections.</p>
-      </div>
-
-      <div class="grid cols-2">
-        <div class="panel">
-          <h3>Bling Girls Card Model</h3>
-          <ul class="list">
-            <li><span>Girls in Season 1</span><strong>20</strong></li>
-            <li><span>Bling design per girl</span><strong>1</strong></li>
-            <li><span>Copies per Bling design</span><strong>3</strong></li>
-            <li><span>Total Bling Girls Cards</span><strong>60</strong></li>
-            <li><span>Maximum full-set winners</span><strong>3</strong></li>
-          </ul>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Staff KPI mechanic</div>
+            <h2>Girls sell the game, not only the box.</h2>
+          </div>
+          <p>
+            Each girl has one ultra-limited Bling Girls Card. If there are 20 girls and only three Bling copies
+            per girl, the full collection has a hard maximum of three possible winners in Season 1.
+          </p>
         </div>
-        <div class="panel dark">
-          <h3>Recommended KPI Ladder</h3>
-          <ul class="list">
-            <li><span>5 distinct Bling cards</span><strong>Small bonus</strong></li>
-            <li><span>10 distinct Bling cards</span><strong>Medium bonus</strong></li>
-            <li><span>15 distinct Bling cards</span><strong>High bonus</strong></li>
-            <li><span>20-card full set</span><strong>Jackpot</strong></li>
-          </ul>
+        <div class="product-grid">
+          <div class="product-card"><b>5</b><strong>Bling cards</strong><span>Small bonus tier. Keeps KPI reachable early in the season.</span></div>
+          <div class="product-card"><b>10</b><strong>Bling cards</strong><span>Medium tier. Encourages repeat selling and exchange behavior.</span></div>
+          <div class="product-card"><b>15</b><strong>Bling cards</strong><span>High tier. Creates serious chase and table conversation.</span></div>
+          <div class="product-card"><b>20</b><strong>Full set</strong><span>Jackpot tier. All twenty girls collected, with maximum three winners by print control.</span></div>
         </div>
       </div>
     </section>
 
     <section id="samples">
-      <div class="section-head">
-        <h2>Sample Card Content</h2>
-        <p>The card content should feel like a product, not a coupon sheet. Each card type must reinforce one of the three loops: spend, collect, or KPI.</p>
-      </div>
-
-      <div class="grid cols-3">
-        <article class="sample-card">
-          <div class="sample-head" style="--bg:linear-gradient(135deg,#5a447d,#c56b7d)">
-            <span>BLING GIRL · NFC</span>
-            <h3>Girl A<br>Bling Night</h3>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Sample card content</div>
+            <h2>Cards customers can understand instantly.</h2>
           </div>
-          <div class="sample-body">Serial 001/003. Counts toward the full Bling Girls Collection. Can be transferred to a girl account for KPI.</div>
-        </article>
-
-        <article class="sample-card">
-          <div class="sample-head" style="--bg:linear-gradient(135deg,#a77b24,#e3c16e)">
-            <span>GOLD · GIFT</span>
-            <h3>20% Off<br>Champagne</h3>
-          </div>
-          <div class="sample-body">One-time redeem. Selected brands only. Cannot stack. Staff redemption required.</div>
-        </article>
-
-        <article class="sample-card">
-          <div class="sample-head" style="--bg:linear-gradient(135deg,#9b5968,#b9924a)">
-            <span>CHAMPAGNE · ACTION</span>
-            <h3>Champagne<br>Call</h3>
-          </div>
-          <div class="sample-body">Girl performs a mini champagne ceremony with consent and staff approval.</div>
-        </article>
-
-        <article class="sample-card">
-          <div class="sample-head" style="--bg:linear-gradient(135deg,#347f79,#426a9f)">
-            <span>SILVER · MISSION</span>
-            <h3>Return<br>Stamp</h3>
-          </div>
-          <div class="sample-body">Bring this card back next visit to receive one mission stamp in the season dashboard.</div>
-        </article>
-
-        <article class="sample-card">
-          <div class="sample-head" style="--bg:linear-gradient(135deg,#527b48,#347f79)">
-            <span>VENUE · COMBO</span>
-            <h3>Five Girl<br>White Set</h3>
-          </div>
-          <div class="sample-body">Show five different White Girls Cards to unlock a small table reward.</div>
-        </article>
-
-        <article class="sample-card">
-          <div class="sample-head" style="--bg:linear-gradient(135deg,#11131a,#343844)">
-            <span>BLACK DIAMOND</span>
-            <h3>VIP Night<br>Package</h3>
-          </div>
-          <div class="sample-body">Ultra rare. Venue approval required. Best reserved for special events or top-spender campaigns.</div>
-        </article>
+          <p>
+            The wording should stay clear, premium, and staff-controlled. Anything flirty is an invitation,
+            not a right, and should always have an alternative reward.
+          </p>
+        </div>
+        <div class="sample-table">
+          <article class="sample-card"><span class="tag">Gold Discount</span><h3>Champagne 20</h3><p>20% off selected champagne tonight or on the next visit. Not stackable. Staff redemption only.</p></article>
+          <article class="sample-card"><span class="tag">Champagne Action</span><h3>Photo Moment</h3><p>Invite one cast member for one approved photo moment. Consent required. Alternative reward available.</p></article>
+          <article class="sample-card"><span class="tag">Silver Gift</span><h3>Vodka Set</h3><p>Free vodka set with qualifying table spend. One redemption per table per night.</p></article>
+          <article class="sample-card"><span class="tag">Mission</span><h3>Three Nights</h3><p>Visit three nights within the season and unlock a member stamp or limited mission reward.</p></article>
+          <article class="sample-card"><span class="tag">Bling Girl</span><h3>Season Cast Card</h3><p>One of three NFC copies for a specific girl. Used for collection, trading, and staff KPI progress.</p></article>
+          <article class="sample-card"><span class="tag">Black Diamond</span><h3>VIP Ceremony</h3><p>Ultra-rare season card. Unlocks a controlled VIP celebration package or headline reward.</p></article>
+        </div>
       </div>
     </section>
 
-    <section>
-      <div class="section-head">
-        <h2>Operating Guardrails</h2>
-        <p>These rules protect the girls, the venue, and the commercial system.</p>
-      </div>
-
-      <div class="rules">
-        <div class="rule">
-          <div class="check">✓</div>
-          <div><strong>Consent-first action cards</strong><span>Flirty or physical action cards are requests, never rights. Girl refusal must be allowed.</span></div>
+    <section id="guardrails">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Operating guardrails</div>
+            <h2>Designed to protect the venue.</h2>
+          </div>
+          <p>
+            The system should feel fun and premium while staying controlled, consent-based, and operationally manageable.
+          </p>
         </div>
-        <div class="rule">
-          <div class="check">✓</div>
-          <div><strong>Staff redemption only</strong><span>Discount, gift, and action cards should be redeemed by staff to control abuse.</span></div>
-        </div>
-        <div class="rule">
-          <div class="check">✓</div>
-          <div><strong>No stacking</strong><span>Discounts cannot stack unless a specific combo card explicitly permits it.</span></div>
-        </div>
-        <div class="rule">
-          <div class="check">✓</div>
-          <div><strong>Expiry by card type</strong><span>Girls Cards remain permanent; utility cards expire by season or stated date.</span></div>
-        </div>
-        <div class="rule">
-          <div class="check">✓</div>
-          <div><strong>NFC ownership history</strong><span>Transfers and redemptions should be logged to prevent fake winners and fake KPI.</span></div>
-        </div>
-        <div class="rule">
-          <div class="check">✓</div>
-          <div><strong>Legal review before launch</strong><span>Japan venue rules, reward mechanics, and adult interaction wording need review.</span></div>
+        <div class="guardrails">
+          <div class="guardrail"><strong>Consent first</strong><span>Action cards are requests. Girls may refuse and staff can substitute another benefit.</span></div>
+          <div class="guardrail"><strong>Staff redemption</strong><span>Discounts, gifts, and actions are validated by staff through NFC to prevent abuse.</span></div>
+          <div class="guardrail"><strong>No stacking</strong><span>Rewards cannot stack unless a specific combo card explicitly permits it.</span></div>
+          <div class="guardrail"><strong>Expiry by type</strong><span>Girls Cards remain permanent; reward and action cards expire by season or stated date.</span></div>
+          <div class="guardrail"><strong>Ownership history</strong><span>NFC transfer records prevent fake winners and fake KPI completion.</span></div>
+          <div class="guardrail"><strong>Legal review</strong><span>Japan reward mechanics, adult venue wording, and physical interaction rules need review before launch.</span></div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    LUXE Cards v0.8 · Remaining 20%: final art direction, card templates, box design, print specs, and compliance review.
+  <footer>
+    LUXE Cards v0.9 concept · generated card visuals · remaining work: final art, box dieline, print specs, backend prototype, compliance review
   </footer>
+
   <script>
     (() => {
       const accountName = "luxe";
