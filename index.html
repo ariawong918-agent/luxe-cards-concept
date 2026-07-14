@@ -584,6 +584,158 @@
       font-size: 13px;
     }
 
+    .cast-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+    .cast-card {
+      position: relative;
+      min-height: 360px;
+      padding: 22px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(20, 18, 14, .92), rgba(7, 7, 7, .98)),
+        radial-gradient(circle at 70% 10%, rgba(212, 175, 55, .22), transparent 34%);
+      border: 1px solid rgba(212, 175, 55, .24);
+    }
+    .cast-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(212, 175, 55, .24);
+      pointer-events: none;
+    }
+    .cast-rarity {
+      display: flex;
+      justify-content: space-between;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .cast-name {
+      position: relative;
+      margin: 118px 0 20px;
+      font-family: var(--serif);
+      font-size: 36px;
+      line-height: 1;
+      font-weight: 400;
+    }
+    .cast-name span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .cast-stats {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(212, 175, 55, .18);
+    }
+    .cast-stat {
+      padding: 10px;
+      background: rgba(9, 9, 9, .9);
+    }
+    .cast-stat b {
+      display: block;
+      color: var(--gold);
+      font-size: 18px;
+      line-height: 1;
+    }
+    .cast-stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .cast-tags {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    .cast-tags span {
+      padding: 5px 8px;
+      border: 1px solid rgba(212, 175, 55, .18);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid rgba(212, 175, 55, .16);
+      background: #0d0d0d;
+    }
+    table {
+      width: 100%;
+      min-width: 980px;
+      border-collapse: collapse;
+      font-size: 12px;
+      color: #d7d0c3;
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(212, 175, 55, .1);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      color: var(--gold);
+      background: #12110f;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    td code {
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .scenario {
+      padding: 26px;
+      background: linear-gradient(180deg, #171511, #100f0d);
+      border: 1px solid rgba(212, 175, 55, .16);
+    }
+    .scenario h3 {
+      margin: 0 0 18px;
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--gold);
+    }
+    .scenario dl {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px 18px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .scenario dd {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
     footer {
       padding: 34px 36px;
       color: var(--dim);
@@ -605,6 +757,7 @@
       .rarity-ladder { grid-template-columns: repeat(2, 1fr); }
       .flow { grid-template-columns: repeat(2, 1fr); }
       .sample-table, .guardrails { grid-template-columns: repeat(2, 1fr); }
+      .cast-grid, .scenario-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
       .brand strong { font-size: 23px; }
@@ -612,6 +765,7 @@
       section { padding: 68px 18px; }
       .hero-copy { padding: 52px 22px; }
       .hero-metrics, .product-grid, .pool-grid, .rarity-ladder, .flow, .sample-table, .guardrails { grid-template-columns: 1fr; }
+      .cast-grid, .scenario-grid { grid-template-columns: 1fr; }
       .bar-row { grid-template-columns: 108px 1fr 58px; gap: 10px; }
       .auth-panel { padding: 24px; }
     }
@@ -645,8 +799,11 @@
     </a>
     <div class="nav-links">
       <a href="#product">Product</a>
+      <a href="#revenue">Revenue</a>
       <a href="#cards">Cards</a>
+      <a href="#casts">Casts</a>
       <a href="#distribution">Distribution</a>
+      <a href="#catalogue">Catalogue</a>
       <a href="#nfc">NFC</a>
       <a href="#kpi">KPI</a>
       <a href="#guardrails">Rules</a>
@@ -694,6 +851,50 @@
       </div>
     </section>
 
+    <section id="revenue">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Business case range</div>
+            <h2>Three revenue scenarios.</h2>
+          </div>
+          <p>
+            主模型先保持 300 boxes / ¥10,000。Projection 用 range 表達，不硬估單一數字；
+            management 可以一眼看到 card sales plus champagne/table uplift.
+          </p>
+        </div>
+        <div class="scenario-grid">
+          <article class="scenario">
+            <h3>Conservative</h3>
+            <dl>
+              <dt>Boxes sold</dt><dd>150</dd>
+              <dt>Box revenue</dt><dd>¥1.5M</dd>
+              <dt>Uplift assumption</dt><dd>+15%</dd>
+              <dt>Use case</dt><dd>MVP test</dd>
+            </dl>
+          </article>
+          <article class="scenario">
+            <h3>Base</h3>
+            <dl>
+              <dt>Boxes sold</dt><dd>300</dd>
+              <dt>Box revenue</dt><dd>¥3.0M</dd>
+              <dt>Uplift assumption</dt><dd>+25%</dd>
+              <dt>Use case</dt><dd>Season launch</dd>
+            </dl>
+          </article>
+          <article class="scenario">
+            <h3>Aggressive</h3>
+            <dl>
+              <dt>Boxes sold</dt><dd>300 + packs</dd>
+              <dt>Box revenue</dt><dd>¥3.0M+</dd>
+              <dt>Uplift assumption</dt><dd>+35%</dd>
+              <dt>Use case</dt><dd>Collector hype</dd>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="cards">
       <div class="wrap">
         <div class="section-head">
@@ -727,6 +928,60 @@
       </div>
     </section>
 
+    <section id="casts">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Official cast data layer</div>
+            <h2>Real profiles become collectible stats.</h2>
+          </div>
+          <p>
+            Official LUXE cast data supplies the profile layer: stage name, romanized name, grade, height,
+            cup size, English level, appearance tags, and service style. Public deck uses generated/stylized card visuals;
+            internal version can swap in authorized official photos.
+          </p>
+        </div>
+        <div class="cast-grid">
+          <article class="cast-card">
+            <div class="cast-rarity"><span>Bling Girl</span><span>NFC · 001/003</span></div>
+            <h3 class="cast-name">Sakura <span>さくら · Grade A+</span></h3>
+            <div class="cast-stats">
+              <div class="cast-stat"><b>B</b><span>Cup</span></div>
+              <div class="cast-stat"><b>BASIC</b><span>English</span></div>
+              <div class="cast-stat"><b>Beauty</b><span>Look</span></div>
+              <div class="cast-stat"><b>Party</b><span>Service</span></div>
+            </div>
+            <div class="cast-tags"><span>kirei</span><span>cute</span><span>listener</span><span>drinks</span></div>
+          </article>
+          <article class="cast-card">
+            <div class="cast-rarity"><span>Champagne Girl</span><span>NFC · 002/003</span></div>
+            <h3 class="cast-name">Mashiro <span>ましろ · Grade A-</span></h3>
+            <div class="cast-stats">
+              <div class="cast-stat"><b>166</b><span>Height</span></div>
+              <div class="cast-stat"><b>G</b><span>Cup</span></div>
+              <div class="cast-stat"><b>Model</b><span>Look</span></div>
+              <div class="cast-stat"><b>28</b><span>Age</span></div>
+            </div>
+            <div class="cast-tags"><span>sexy</span><span>model</span><span>adult</span><span>drinks</span></div>
+          </article>
+          <article class="cast-card">
+            <div class="cast-rarity"><span>Black Diamond</span><span>NFC · 003/003</span></div>
+            <h3 class="cast-name">Riri <span>りり · Grade A</span></h3>
+            <div class="cast-stats">
+              <div class="cast-stat"><b>165</b><span>Height</span></div>
+              <div class="cast-stat"><b>F</b><span>Cup</span></div>
+              <div class="cast-stat"><b>BASIC</b><span>English</span></div>
+              <div class="cast-stat"><b>VIP</b><span>Style</span></div>
+            </div>
+            <div class="cast-tags"><span>elegant</span><span>big sister</span><span>sweet</span><span>free</span></div>
+          </article>
+        </div>
+        <div class="table-wrap">
+          <table id="castTable" aria-label="Official LUXE cast database"></table>
+        </div>
+      </div>
+    </section>
+
     <section id="distribution">
       <div class="wrap">
         <div class="section-head">
@@ -746,7 +1001,7 @@
             <div class="bar-row"><span>Gold</span><div class="bar"><span style="width:6.5%"></span></div><b>1,950</b></div>
             <div class="bar-row"><span>Champagne</span><div class="bar"><span style="width:2%"></span></div><b>600</b></div>
             <div class="bar-row"><span>Bling Girls</span><div class="bar"><span style="width:.2%"></span></div><b>60</b></div>
-            <div class="bar-row"><span>Black Diamond</span><div class="bar"><span style="width:.1%"></span></div><b>30</b></div>
+            <div class="bar-row"><span>Black Diamond</span><div class="bar"><span style="width:.3%"></span></div><b>90</b></div>
           </div>
           <div class="pool-grid">
             <div class="pool-item"><strong>60</strong><span>Girls Card designs: 20 girls x 3 designs each, with two White cards and one Bling card per girl.</span></div>
@@ -754,6 +1009,25 @@
             <div class="pool-item"><strong>10</strong><span>Action Card designs: flirty table interactions controlled by consent and staff approval.</span></div>
             <div class="pool-item"><strong>15</strong><span>Mission / Venue / Combo designs: return visits, set collection, and VIP progression.</span></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogue">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">100-design catalogue</div>
+            <h2>The complete Season 1 card pool.</h2>
+          </div>
+          <p>
+            Season 1 uses 20 launch girls from the 31 official cast profiles. Each selected girl gets
+            two White cards and one ultra-limited Bling card. The remaining 40 designs drive spend, action,
+            missions, and venue progression.
+          </p>
+        </div>
+        <div class="table-wrap">
+          <table id="catalogueTable" aria-label="Season 1 card catalogue"></table>
         </div>
       </div>
     </section>
@@ -873,6 +1147,119 @@
 
   <script>
     (() => {
+      const casts = [
+        ["さくら","sakura","A+","", "B","", "BASIC","キレイ系 / カワイイ系","癒し・聞き上手 / 盛り上げ / お酒強い"],
+        ["さやか","sayaka","B-","27","C","160","BASIC","キレイ系 / ギャル・華やか系","盛り上げ / トーク・お笑い / お酒強い"],
+        ["ましろ","mashiro","A-","28","G","166","NG","キレイ系 / セクシー系 / お姉さん系 / モデル系","大人・お姉さん / お酒強い / 気配り / 盛り上げ"],
+        ["りり","riri","A","", "F","165","BASIC","キレイ系 / お姉さん系","盛り上げ / 癒し・聞き上手 / 甘えんぼ・妹 / 恋人気分 / お酒強い"],
+        ["えみり","emiri","B","", "B","150","NATIVE","ギャル・華やか系","癒し・聞き上手"],
+        ["セリナ","serina","A-","23","C","162","NATIVE","清楚・ナチュラル系","恋人気分 / お酒強い / 知的・教養"],
+        ["なみ","nami","A-","22","B","162","NG","カワイイ系 / 清楚・ナチュラル系","癒し・聞き上手 / 盛り上げ"],
+        ["はんな","hanna","B+","23","E","158","NG","カワイイ系 / 妹系","盛り上げ / トーク・お笑い"],
+        ["ひめか","himeka","A+","23","D","167","NG","キレイ系 / モデル系","盛り上げ / トーク・お笑い"],
+        ["まな","mana","B","23","E","158","NG","清楚・ナチュラル系","甘えんぼ・妹"],
+        ["みさき","misaki","B","22","E","161","BASIC","カワイイ系","トーク・お笑い"],
+        ["ゆずき","yuzuki","A","24","F","165","NG","カワイイ系 / 清楚・ナチュラル系","盛り上げ"],
+        ["りん","rin","A-","22","K","155","NG","カワイイ系","甘えんぼ・妹"],
+        ["ありな","arina","A+","", "E","165","CONVERSATIONAL","キレイ系 / カワイイ系","癒し・聞き上手 / 甘えんぼ・妹 / 知的・教養"],
+        ["いぶき","ibuki","A-","28","E","172","CONVERSATIONAL","キレイ系 / 清楚・ナチュラル系","恋人気分 / 気配り / 盛り上げ"],
+        ["かりな","karina","A+","22","E","158","NG","キレイ系 / モデル系 / カワイイ系","盛り上げ / トーク・お笑い / お酒強い / 個性派・自由"],
+        ["こずえ","kozue","B-","21","H","157","","",""],
+        ["さほ","saho","B+","21","F","164","BASIC","",""],
+        ["トワ","towa","B+","", "G","149","CONVERSATIONAL","セクシー系 / お姉さん系","お酒強い"],
+        ["なお","nao","A","21","E","165","CONVERSATIONAL","キレイ系","癒し・聞き上手 / 恋人気分"],
+        ["なの","nano","B-","", "F","163","NG","ギャル・華やか系","盛り上げ / 甘えんぼ・妹"],
+        ["まりあ","maria","B","", "D","153","CONVERSATIONAL","カワイイ系 / ギャル・華やか系 / 小動物系","盛り上げ / 癒し・聞き上手 / お酒強い / 気配り"],
+        ["みさ","misa","C","24","H","159","CONVERSATIONAL","セクシー系","盛り上げ / 癒し・聞き上手 / トーク・お笑い / お酒強い / 知的・教養"],
+        ["らら","rara","B+","23","G","154","NG","カワイイ系 / 小動物系","盛り上げ / 恋人気分"],
+        ["りあ","ria","B+","", "G","155","NATIVE","セクシー系 / 個性派","盛り上げ / お酒強い / トーク・お笑い"],
+        ["るる","ruru","B","24","D","157","NG","カワイイ系 / 妹系","トーク・お笑い / 盛り上げ"],
+        ["あるか","aruka","B","25","F","159","BASIC","清楚・ナチュラル系 / 小動物系","癒し・聞き上手 / 甘えんぼ・妹 / 恋人気分"],
+        ["せな","sena","B-","24","C","","CONVERSATIONAL","キレイ系 / お姉さん系","癒し・聞き上手 / 大人・お姉さん / お酒強い"],
+        ["ののか","nonoka","B-","22","C","160","NG","キレイ系 / 清楚・ナチュラル系","個性派・自由 / 癒し・聞き上手"],
+        ["りと","rito","A","", "B","160","NG","その他","その他"],
+        ["れい","rei","B","23","C","162","NG","カワイイ系","お酒強い / 盛り上げ"]
+      ];
+
+      const launchRoster = casts.slice(0, 20);
+      const utilityCards = [
+        ["D001","Discount","Silver","Free Shot Set","One free shot set with qualifying table spend.","420"],
+        ["D002","Discount","Silver","Mixer Upgrade","Free mixer upgrade for one bottle order.","420"],
+        ["D003","Discount","Silver","Next Visit ¥1,000","¥1,000 off next visit, no stacking.","420"],
+        ["D004","Discount","Silver","Entry Return","Free entry on a follow-up visit within season.","360"],
+        ["D005","Discount","Gold","Vodka Set","Free vodka set with minimum table spend.","180"],
+        ["D006","Discount","Gold","Champagne 20","20% off selected champagne.","150"],
+        ["D007","Discount","Gold","Table Upgrade","Priority table upgrade when available.","120"],
+        ["D008","Discount","Gold","Birthday Spark","Birthday visit champagne support package.","90"],
+        ["D009","Discount","Champagne","Buy One Get One","Selected champagne BOGO with cap and staff approval.","45"],
+        ["D010","Discount","Champagne","VIP Room Assist","VIP room upgrade support, subject to availability.","36"],
+        ["D011","Gift","Silver","LUXE Token","Collect three tokens for a season gift.","420"],
+        ["D012","Gift","Gold","Signature Pack","One signed souvenir card by selected cast.","120"],
+        ["D013","Gift","Champagne","Champagne Ceremony","Mini ceremony moment with staff coordination.","30"],
+        ["D014","Gift","Black Diamond","Season Celebration","Top-tier celebration package, management approval.","12"],
+        ["D015","Discount","Gold","Guest Return Pass","Bring a friend next visit and unlock table benefit.","120"],
+        ["A001","Action","Silver","Toast Moment","Invite a cast member for a toast moment. Consent required.","330"],
+        ["A002","Action","Silver","Song Choice","Cast selects one song or mood for the table.","330"],
+        ["A003","Action","Silver","Lucky Dice","One staff-approved dice mini game.","300"],
+        ["A004","Action","Gold","Photo Moment","Approved photo moment. Consent required; alternative reward available.","150"],
+        ["A005","Action","Gold","Signature Moment","Cast signs one card or season insert.","150"],
+        ["A006","Action","Gold","Sit Closer Moment","One song-length closer seating invitation. Consent required.","90"],
+        ["A007","Action","Champagne","Cheek Pose","Cheek pose / kiss-style pose by consent only; substitute reward if declined.","36"],
+        ["A008","Action","Champagne","Champagne Call","Cast leads a mini champagne call.","36"],
+        ["A009","Action","Black Diamond","VIP Spotlight","Staff-managed VIP spotlight moment.","9"],
+        ["A010","Action","Silver","Charm Question","Customer asks one approved profile question.","300"],
+        ["M001","Mission","White","Three Cast Whites","Collect three different White Girls Cards.","600"],
+        ["M002","Mission","White","Five Cast Whites","Collect five different White Girls Cards.","600"],
+        ["M003","Mission","White","Return Night","Bring any card back next visit for a stamp.","600"],
+        ["M004","Mission","Silver","Language Bonus","Collect a card from a cast with BASIC+ English level.","300"],
+        ["M005","Mission","Silver","Beauty Line","Collect three Kirei/Cute profile tags.","300"],
+        ["M006","Mission","Silver","Party Line","Collect three Moriage/Drink-strong service tags.","300"],
+        ["M007","Mission","Gold","A-Rank Hunt","Collect three A-grade cast cards.","120"],
+        ["M008","Mission","Gold","Bling Pair","Pair any Bling Girl Card with a Champagne Card.","90"],
+        ["M009","Mission","Champagne","Season Stamp","Complete three visits in one season.","36"],
+        ["M010","Mission","Black Diamond","Full Bling Claim","Full 20-girl Bling collection verification card.","3"],
+        ["V001","Venue","White","LUXE Shinjuku","Venue lore card for collection volume.","600"],
+        ["V002","Venue","White","Kabukicho Night","Venue lore card for collection volume.","600"],
+        ["V003","Venue","Silver","VIP Room","Venue feature card; pairs with upgrade rewards.","300"],
+        ["V004","Venue","Gold","Champagne Tower","Venue feature card; pairs with ceremony rewards.","90"],
+        ["V005","Venue","Champagne","Season Launch","Limited launch marker card.","30"]
+      ];
+
+      const renderTable = (id, headers, rows) => {
+        const table = document.getElementById(id);
+        if (!table) return;
+        table.innerHTML = `<thead><tr>${headers.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(cell => `<td>${cell || "-"}</td>`).join("")}</tr>`).join("")}</tbody>`;
+      };
+
+      renderTable("castTable", ["No.","Stage name","Romanized","Grade","Age","Cup","Height","English","Appearance","Service style"], casts.map((c, index) => [
+        String(index + 1).padStart(2, "0"), c[0], c[1], c[2], c[3], c[4], c[5] ? `${c[5]}cm` : "", c[6], c[7], c[8]
+      ]));
+
+      const girlCatalogue = launchRoster.flatMap((c, index) => {
+        const id = String(index + 1).padStart(2, "0");
+        const name = c[1].toUpperCase();
+        return [
+          [`G${id}A`, "Girls", "White", `${name} Day Profile`, `${c[0]} / ${c[1]} base profile card`, "420"],
+          [`G${id}B`, "Girls", "White", `${name} Night Profile`, `alternate base card with style tags`, "420"],
+          [`BG${id}`, "Girls", "Bling", `${name} Bling Girl`, `NFC chase card, 3 copies only`, "3"]
+        ];
+      });
+      const utilityQty = {
+        White: [840, 840, 840, 840, 840],
+        Silver: [485, 485, 485, 485, 485, 485, 485, 485, 485, 485, 485, 485, 480],
+        Gold: [163, 163, 163, 163, 163, 163, 163, 163, 163, 163, 163, 157],
+        Champagne: [86, 86, 86, 86, 86, 86, 84],
+        "Black Diamond": [30, 30, 30]
+      };
+      const utilityIndex = {};
+      const utilityCatalogue = utilityCards.map(row => {
+        const rarity = row[2];
+        utilityIndex[rarity] = utilityIndex[rarity] || 0;
+        const qty = utilityQty[rarity][utilityIndex[rarity]++];
+        return [...row.slice(0, 5), String(qty)];
+      });
+      renderTable("catalogueTable", ["ID","Category","Rarity","Card name","Function / content","Print qty"], [...girlCatalogue, ...utilityCatalogue]);
+
       const accountName = "luxe";
       const passwordHash = "c9275b7ededdc2fabca2e148182792aacb94c421e2545cb4ebb1a6658a41a52d";
       const sessionKey = "luxe-cards-auth";
