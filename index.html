@@ -454,6 +454,186 @@
       background: var(--gold);
       transform: rotate(45deg);
     }
+    .family-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .family-panel {
+      display: flex;
+      flex-direction: column;
+      min-height: 560px;
+      padding: 18px;
+      border: 1px solid rgba(212, 175, 55, .16);
+      background: linear-gradient(180deg, #151411, #0d0d0d);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .28);
+    }
+    .family-face {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 300px;
+      aspect-ratio: 2.5 / 3.5;
+      padding: 14px;
+      margin: 0 auto 18px;
+      width: min(100%, 220px);
+      overflow: hidden;
+      border: 2px solid rgba(212, 175, 55, .54);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .08), transparent 28%),
+        radial-gradient(circle at 80% 18%, rgba(212, 175, 55, .24), transparent 30%),
+        linear-gradient(180deg, #1d1a14, #060606);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08), 0 20px 40px rgba(0, 0, 0, .42);
+    }
+    .family-face::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(212, 175, 55, .32);
+      border-radius: 5px;
+      pointer-events: none;
+    }
+    .family-face.photo {
+      justify-content: flex-end;
+      padding: 10px;
+      background: #090909;
+    }
+    .family-face.photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .92;
+    }
+    .family-face.photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, .06), rgba(0, 0, 0, .82));
+      z-index: 1;
+    }
+    .face-top, .face-bottom, .face-center {
+      position: relative;
+      z-index: 2;
+    }
+    .face-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .face-center {
+      margin: auto 0;
+      text-align: center;
+    }
+    .face-center b {
+      display: block;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .face-center span {
+      display: block;
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .face-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      color: rgba(245, 240, 232, .86);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .face-bottom b {
+      display: block;
+      margin-top: 4px;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .face-chip {
+      display: block;
+      width: 24px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1px solid rgba(212, 175, 55, .68);
+      background:
+        linear-gradient(90deg, transparent 31%, rgba(212, 175, 55, .46) 32%, transparent 34%),
+        linear-gradient(180deg, rgba(212, 175, 55, .72), rgba(140, 110, 32, .42));
+    }
+    .face-white {
+      border-color: rgba(245, 240, 232, .82);
+      background: linear-gradient(180deg, #e6ded1, #bfb3a4);
+    }
+    .face-white .face-top, .face-white .face-bottom, .face-white .face-center span { color: #17120c; }
+    .face-white .face-center b, .face-white .face-bottom b { color: #7d5c13; }
+    .family-face.photo.face-white .face-top,
+    .family-face.photo.face-white .face-bottom {
+      color: rgba(245, 240, 232, .9);
+    }
+    .family-face.photo.face-white .face-bottom b {
+      color: var(--gold);
+    }
+    .face-diamond {
+      border-color: rgba(236, 236, 255, .74);
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255, 255, 255, .28), transparent 28%),
+        linear-gradient(135deg, #050505, #1d2230 52%, #050505);
+    }
+    .family-panel h3 {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 29px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .family-panel p {
+      margin: 0;
+      color: #d5cfc2;
+      font-size: 14px;
+    }
+    .family-meta {
+      display: grid;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 18px;
+    }
+    .family-meta div {
+      display: grid;
+      grid-template-columns: 104px 1fr;
+      gap: 12px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(212, 175, 55, .12);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .family-meta strong {
+      color: var(--ink);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
 
     .distribution {
       display: grid;
@@ -997,6 +1177,7 @@
       .flow { grid-template-columns: repeat(2, 1fr); }
       .assumption-grid { grid-template-columns: repeat(2, 1fr); }
       .sample-table, .guardrails { grid-template-columns: repeat(2, 1fr); }
+      .family-grid { grid-template-columns: repeat(2, 1fr); }
       .cast-grid, .scenario-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
@@ -1008,6 +1189,7 @@
       .commercial-copy { padding: 26px 22px; }
       .commercial-visual img { min-height: 240px; }
       .assumption-grid { grid-template-columns: 1fr; }
+      .family-grid { grid-template-columns: 1fr; }
       .cast-grid, .scenario-grid { grid-template-columns: 1fr; }
       .bar-row { grid-template-columns: 108px 1fr 58px; gap: 10px; }
       .auth-panel { padding: 24px; }
@@ -1260,23 +1442,91 @@
             cast-card photography, VIP atmosphere, and a clean Shinjuku premium nightlife tone.
           </p>
         </div>
-        <div class="showcase">
-          <div class="image-frame">
-            <img src="assets/luxe-card-lineup.png" alt="Generated LUXE card lineup showing White, Bling, Gold, Champagne, Mission, and Black Diamond cards">
-          </div>
-          <aside class="note-panel">
-            <h3>Card families</h3>
-            <p>
-              The design system should feel like a real collectible product, not a coupon sheet.
-              Girls Cards are the emotional chase; reward cards create immediate spend; mission cards create return visits.
-            </p>
-            <ul class="bullet-list">
-              <li>White Girl Cards: common, no NFC, volume and collectability.</li>
-              <li>Bling Girl Cards: ultra-limited NFC cards used for collection and KPI.</li>
-              <li>Gold / Champagne Cards: discounts, action cards, gifts, and venue upgrades.</li>
-              <li>Black Diamond Cards: VIP moments, season winners, or event-only rewards.</li>
-            </ul>
-          </aside>
+        <div class="family-grid">
+          <article class="family-panel">
+            <div class="family-face photo face-white">
+              <img src="assets/generated-casts/sakura-regenerated-v2.jpg" alt="White Girl Card sample face">
+              <div class="face-top"><span>White Girl</span><span>No NFC</span></div>
+              <div class="face-bottom"><span>Sakura<br><b>White</b></span><span>Base profile</span></div>
+            </div>
+            <h3>White Girl Cards</h3>
+            <p>Common girl profile cards that give the pack volume, collection habit, and trading behavior without creating redemption cost.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>Easy collecting, swapping, and conversation starter with casts.</span></div>
+              <div><strong>Business role</strong><span>Low-cost content that makes each pack feel full.</span></div>
+              <div><strong>Control</strong><span>No NFC, no redemption, no direct cost liability.</span></div>
+            </div>
+          </article>
+          <article class="family-panel">
+            <div class="family-face photo">
+              <img src="assets/generated-casts/mashiro-regenerated-v2.jpg" alt="Bling Girl Card sample face">
+              <div class="face-top"><span>Bling Girl</span><span>NFC · 001/003</span></div>
+              <div class="face-bottom"><span>Mashiro<br><b>Bling</b></span><span>KPI chase</span></div>
+            </div>
+            <h3>Bling Girl Cards</h3>
+            <p>Ultra-limited NFC girl cards. Each girl can have only three Bling copies in Season 1, controlling how many full-set winners can exist.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>Rare chase card, trading object, and status signal.</span></div>
+              <div><strong>Business role</strong><span>Drives box opening, repeat purchase, and cast-led selling.</span></div>
+              <div><strong>Control</strong><span>NFC owner tracking, transfer history, and collection verification.</span></div>
+            </div>
+          </article>
+          <article class="family-panel">
+            <div class="family-face">
+              <div class="face-top"><span>Gold Discount</span><span>NFC</span></div>
+              <div class="face-center"><b>Champagne 20</b><span>20% off selected bottle</span></div>
+              <div class="face-bottom"><span>Valid this season<br><b>Gold</b></span><i class="face-chip"></i></div>
+            </div>
+            <h3>Discount / Gift Cards</h3>
+            <p>Reward cards that stimulate champagne, vodka set, VIP assist, birthday package, guest return, or small gift redemption.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>Immediate perceived value and reason to order more tonight or return later.</span></div>
+              <div><strong>Business role</strong><span>Turns card pulls into wine/table spending triggers.</span></div>
+              <div><strong>Control</strong><span>Minimum spend, expiry, no stacking, staff redemption only.</span></div>
+            </div>
+          </article>
+          <article class="family-panel">
+            <div class="family-face">
+              <div class="face-top"><span>Champagne Action</span><span>NFC</span></div>
+              <div class="face-center"><b>Toast Moment</b><span>Invite a cast for one toast</span></div>
+              <div class="face-bottom"><span>Consent required<br><b>Action</b></span><i class="face-chip"></i></div>
+            </div>
+            <h3>Action Cards</h3>
+            <p>Experience cards that create table interaction: toast, song choice, dice game, photo moment, signature, champagne call, or premium pose.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>Feels playful and personal, not just a financial discount.</span></div>
+              <div><strong>Business role</strong><span>Attaches naturally to cast drinks, nominations, and champagne moments.</span></div>
+              <div><strong>Control</strong><span>Cast consent, staff approval, substitute reward if declined.</span></div>
+            </div>
+          </article>
+          <article class="family-panel">
+            <div class="family-face">
+              <div class="face-top"><span>Venue Mission</span><span>Stamp</span></div>
+              <div class="face-center"><b>Return Night</b><span>Bring any card back next visit</span></div>
+              <div class="face-bottom"><span>Collect · Visit · Unlock<br><b>Mission</b></span><i class="face-chip"></i></div>
+            </div>
+            <h3>Mission / Venue Cards</h3>
+            <p>Progress cards that turn the product into a small game: collect girls, complete visits, unlock stamps, or pair cards for a reward.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>Creates goals beyond tonight and encourages swapping with other customers.</span></div>
+              <div><strong>Business role</strong><span>Pushes return visits, longer engagement, and future table spend.</span></div>
+              <div><strong>Control</strong><span>Reward only unlocks after verified visit, spend, or collection condition.</span></div>
+            </div>
+          </article>
+          <article class="family-panel">
+            <div class="family-face face-diamond">
+              <div class="face-top"><span>Black Diamond</span><span>NFC · VIP</span></div>
+              <div class="face-center"><b>Season Winner</b><span>Management approval only</span></div>
+              <div class="face-bottom"><span>Event reward<br><b>1 of 30</b></span><i class="face-chip"></i></div>
+            </div>
+            <h3>Black Diamond Cards</h3>
+            <p>The rarest tier for VIP moments, season winner claims, ultra-limited celebration rewards, and headline partner storytelling.</p>
+            <div class="family-meta">
+              <div><strong>Customer role</strong><span>High-status pull that creates attention and social proof.</span></div>
+              <div><strong>Business role</strong><span>Builds collector hype and gives management a controlled premium reward layer.</span></div>
+              <div><strong>Control</strong><span>Very low print qty, serial number, NFC validation, management approval.</span></div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
